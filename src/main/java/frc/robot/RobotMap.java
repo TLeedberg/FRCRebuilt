@@ -78,21 +78,24 @@ public class RobotMap {
 
   // [R]obot Geometry
   // TODO: get radius
-  public static final double R_BASE_RADIUS_INCHES = 0;
+  public static double R_BASE_RADIUS_INCHES = 0;
 
   // [U]ser Input
-  public static final int U_DRIVER_XBOX_CONTROLLER = 0;
-  public static final int U_OPERATOR_XBOX_CONTROLLER = 0;
+  public static int U_DRIVER_XBOX_CONTROLLER = 0;
+  public static int U_OPERATOR_XBOX_CONTROLLER = 1;
 
   // [D]rive
   // TODO: fill in drive mappings
-  public static final int D_FRONT_RIGHT_DRIVE = RoboRioMap.CAN_0;
-  public static final int D_FRONT_LEFT_DRIVE = RoboRioMap.CAN_0;
-  public static final int D_BACK_RIGHT_DRIVE = RoboRioMap.CAN_0;
-  public static final int D_BACK_LEFT_DRIVE = RoboRioMap.CAN_0;
+  public static int D_FRONT_RIGHT_DRIVE = RoboRioMap.CAN_0;
+  public static int D_FRONT_LEFT_DRIVE = RoboRioMap.CAN_0;
+  public static int D_BACK_RIGHT_DRIVE = RoboRioMap.CAN_0;
+  public static int D_BACK_LEFT_DRIVE = RoboRioMap.CAN_0;
   // TODO: fill in turning mappings
-  public static final int D_FRONT_RIGHT_TURNING = RoboRioMap.CAN_0;
-  public static final int D_FRONT_LEFT_TURNING = RoboRioMap.CAN_0;
-  public static final int D_BACK_RIGHT_TURNING = RoboRioMap.CAN_0;
-  public static final int D_BACK_LEFT_TURNING = RoboRioMap.CAN_0;
+  public static int D_FRONT_RIGHT_TURNING = RoboRioMap.CAN_0;
+  public static int D_FRONT_LEFT_TURNING = RoboRioMap.CAN_0;
+  public static int D_BACK_RIGHT_TURNING = RoboRioMap.CAN_0;
+  public static int D_BACK_LEFT_TURNING = RoboRioMap.CAN_0;
+
+  // [V]ision
+  public static boolean V_ENABLED = true;
 }

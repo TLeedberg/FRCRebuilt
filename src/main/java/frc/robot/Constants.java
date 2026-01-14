@@ -5,9 +5,14 @@ import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
+import edu.wpi.first.math.Matrix;
+import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.numbers.N1;
+import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.math.util.Units;
+import frc.robot.utils.vision.VisionConfig;
 
 public final class Constants {
     public static final String robotName = "robot360";
@@ -109,6 +114,19 @@ public final class Constants {
 
     public static final class VisionConstants {
         public static final AprilTagFieldLayout kTagLayout = AprilTagFieldLayout.loadField(AprilTagFields.kDefaultField);
+
+        // TODO: experiment to find actual stddevs
+        public static final Matrix<N3, N1> kSingleTagStdDevs = VecBuilder.fill(4, 4, 8);
+        public static final Matrix<N3, N1> kMultiTagStdDevs = VecBuilder.fill(0.5, 0.5, 1);
+        
+        // Maximum ambiguity accepted as a valid result from the vision systems
+        public static final double kMaxValidAmbiguity = 0.2;
+        public static final double kMaxZError = 0.75;
+        public static final double kMaxRollError = 0.5;
+        public static final double kMaxPitchError = 0.5;
+
+        public static final VisionConfig[] kLeafletVisionSystems = null;
+        public static final VisionConfig[] kRebuiltVisionSystems = null;
     }
 
     public static final class OIConstants {
