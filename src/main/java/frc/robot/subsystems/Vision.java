@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import java.util.List;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ import frc.robot.testingdashboard.SubsystemBase;
 import frc.robot.testingdashboard.TDBoolean;
 import frc.robot.testingdashboard.TDNumber;
 import frc.robot.testingdashboard.TDSendable;
+import frc.robot.utils.Configuration;
 import frc.robot.utils.vision.VisionConfig;
 import frc.robot.utils.vision.VisionEstimationResult;
 import frc.robot.utils.vision.VisionSystem;
@@ -30,35 +32,30 @@ public class Vision extends SubsystemBase {
   private TDNumber m_estY;
   private TDNumber m_estRot;
   private TDBoolean m_poseUpdatesEnabled;
-  private VisionConfig[] m_visionConfig;
   private Field2d m_field;
 
   /** Creates a new Vision. */
   private Vision() {
     super("Vision");
     m_visionSystems = new HashMap<String, VisionSystem>();
-    if(RobotMap.V_ENABLED){
-      if (Constants.robotName.equalsIgnoreCase("leaflet")) {
-        m_visionConfig = VisionConstants.kLeafletVisionSystems;
-      } else {
-        m_visionConfig = VisionConstants.kRebuiltVisionSystems;
-      }
+    List<VisionConfig> myConfig = Configuration.getInstance().getVisionConfigs();
+    if (myConfig != null)
+    {
       // m_visionSystems.ensureCapacity(m_visionConfig.length);
-      for(VisionConfig config : m_visionConfig) {
-        VisionSystem system = new VisionSystem(config);
-        m_visionSystems.put(config.cameraName, system);
+      for(VisionConfig config : myConfig) {
+         VisionSystem system = new VisionSystem(config);
+         m_visionSystems.put(config.cameraName, system);
       }
-
-      m_estX = new TDNumber(this, "Est Pose", "Est X");
-      m_estY = new TDNumber(this, "Est Pose", "Est Y");
-      m_estRot = new TDNumber(this, "Est Pose", "Est Rot");
-      m_field = new Field2d();
-      //We don't care about the default robot object on this field, throw it into the abyss
-      m_field.setRobotPose(-10, 0, Rotation2d.kZero);
-      new TDSendable(this, "Field", "Vision Field", m_field);
-
-      m_poseUpdatesEnabled = new TDBoolean(this, "", "Pose Updates Enabled", true);
     }
+    m_estX = new TDNumber(this, "Est Pose", "Est X");
+    m_estY = new TDNumber(this, "Est Pose", "Est Y");
+    m_estRot = new TDNumber(this, "Est Pose", "Est Rot");
+    m_field = new Field2d();
+    //We don't care about the default robot object on this field, throw it into the abyss
+    m_field.setRobotPose(-10, 0, Rotation2d.kZero);
+    new TDSendable(this, "Field", "Vision Field", m_field);
+
+    m_poseUpdatesEnabled = new TDBoolean(this, "", "Pose Updates Enabled", true);
   }
 
   public static Vision getInstance(){

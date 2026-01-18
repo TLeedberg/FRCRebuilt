@@ -1,0 +1,30 @@
+{
+
+"default" : { 
+   "motorConfigs" : {
+       "frontRightSteer" : {"cType":"SparkMax", "mType":"kBrushless","canid":8},
+       "frontRightDrive" : {"cType":"SparkFlex","mType":"kBrushless","canid":9}
+   },
+   "value1" : "string",
+   "value2" : 42,
+   "value3" : { "nestedvalue" : "value3name", "nestedint" : 19 }
+},
+
+
+"leaflet" : {
+   "motorConfigs" : {
+       "frontRightSteer" : {"cType":"SparkMax", "mType":"kBrushless","canid":18},
+       "frontRightDrive" : {"cType":"SparkFlex","mType":"kBrushless","canid":19}
+   },
+   "Drive" : [
+       {"varName" : "testDouble", "value" : 3.2 },
+       {"varName" : "testInt", "value" : 18 }
+   ],
+   "visionConfig" : [
+        {"name":"foo","positionT":{"x":0.0,"y":0.0,"z":0.0},"positionR":{"quaternion":{"W":1.0,"X":0.0,"Y":0.0,"Z":0.0}},"primaryStrat":"LOWEST_AMBIGUITY","backupStrat":"CLOSEST_TO_CAMERA_HEIGHT"},
+        {"name":"bar","positionT":{"x":0.0,"y":0.0,"z":0.0},"positionR":{"quaternion":{"W":1.0,"X":0.0,"Y":0.0,"Z":0.0}},"primaryStrat":"LOWEST_AMBIGUITY","backupStrat":"CLOSEST_TO_CAMERA_HEIGHT"}
+    ]
+}
+
+}
+

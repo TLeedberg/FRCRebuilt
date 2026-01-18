@@ -37,48 +37,9 @@ class RobotMapConfigValue {
 /** Add your docs here. */
 public class RobotMap {
 
-  public static void init()
-  {
-    try {
-      String home = java.lang.System.getenv("HOME");
-      if (home == null || home.isEmpty()) {
-        home = "/home/lvuser";
-      }
-      else {
-        System.out.println("$HOME is " + home);
-      }
-      File f = new File(home + "/1100_Config");
-      if (f.exists())
-      {
-        ObjectMapper mapper = new ObjectMapper();
-        List<RobotMapConfigValue> changedValues = mapper.readValue(f, new TypeReference<List<RobotMapConfigValue>>(){});
-
-        for (int i=0; i < changedValues.size(); i++) {
-          RobotMapConfigValue value = changedValues.get(i);
-          try {
-            Field field = RobotMap.class.getField(value.varName);
-            field.set(null, value.value);
-            System.out.println("Configuring " + value.varName + " to " + value.value);
-          }
-          catch (java.lang.NoSuchFieldException x) {
-            System.out.println("No RobotMap field named " + value.varName);
-          }
-        }
-      }  
-      else
-      {
-        System.out.println("No configuration present, using defaults");
-      }          
-    } catch (Exception e) {
-      System.err.println("exception from RobotMap.init():" + e.toString());
-      // can't read the config. Carry on.
-    }
-
-  }
-
   // [R]obot Geometry
   // TODO: get radius
-  public static double R_BASE_RADIUS_INCHES = 0;
+  public static double R_BASE_RADIUS_INCHES = 19;
 
   // [U]ser Input
   public static int U_DRIVER_XBOX_CONTROLLER = 0;
@@ -86,15 +47,15 @@ public class RobotMap {
 
   // [D]rive
   // TODO: fill in drive mappings
-  public static int D_FRONT_RIGHT_DRIVE = RoboRioMap.CAN_0;
-  public static int D_FRONT_LEFT_DRIVE = RoboRioMap.CAN_0;
-  public static int D_BACK_RIGHT_DRIVE = RoboRioMap.CAN_0;
-  public static int D_BACK_LEFT_DRIVE = RoboRioMap.CAN_0;
+  public static int D_FRONT_RIGHT_DRIVE = RoboRioMap.CAN_8;
+  public static int D_FRONT_LEFT_DRIVE = RoboRioMap.CAN_10;
+  public static int D_BACK_RIGHT_DRIVE = RoboRioMap.CAN_12;
+  public static int D_BACK_LEFT_DRIVE = RoboRioMap.CAN_14;
   // TODO: fill in turning mappings
-  public static int D_FRONT_RIGHT_TURNING = RoboRioMap.CAN_0;
-  public static int D_FRONT_LEFT_TURNING = RoboRioMap.CAN_0;
-  public static int D_BACK_RIGHT_TURNING = RoboRioMap.CAN_0;
-  public static int D_BACK_LEFT_TURNING = RoboRioMap.CAN_0;
+  public static int D_FRONT_RIGHT_TURNING = RoboRioMap.CAN_9;
+  public static int D_FRONT_LEFT_TURNING = RoboRioMap.CAN_11;
+  public static int D_BACK_RIGHT_TURNING = RoboRioMap.CAN_13;
+  public static int D_BACK_LEFT_TURNING = RoboRioMap.CAN_15;
 
   // [I]ntake TODO: fill in intake mappings
   public static boolean I_ENABLED = true;

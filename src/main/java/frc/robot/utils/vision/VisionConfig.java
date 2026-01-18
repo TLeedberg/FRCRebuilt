@@ -6,19 +6,31 @@ package frc.robot.utils.vision;
 
 import org.photonvision.PhotonPoseEstimator.PoseStrategy;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
+import edu.wpi.first.math.geometry.Translation3d;
 
 /** Add your docs here. */
 public class VisionConfig 
 {
     public String cameraName;
-    public Transform3d cameraPosition;
+    public Translation3d cameraPositionT;
+    public Rotation3d cameraPositionR;
     public PoseStrategy primaryStrategy;
     public PoseStrategy fallBackStrategy;
 
-    public VisionConfig(String name, Transform3d camPosition, PoseStrategy primPoseStrategy, PoseStrategy fallbackPoseStrategy) {
+    @JsonCreator
+    public VisionConfig(@JsonProperty(required = true, value="name") String name,
+                        @JsonProperty(required = true, value="positionT") Translation3d camPositionT,
+                        @JsonProperty(required = true, value="positionR") Rotation3d camPositionR,
+                        @JsonProperty(required = true, value="primaryStrat") PoseStrategy primPoseStrategy,
+                        @JsonProperty(required = true, value="backupStrat") PoseStrategy fallbackPoseStrategy) {
         this.cameraName = name;
-        this.cameraPosition = camPosition;
+        this.cameraPositionT = camPositionT;
+        this.cameraPositionR = camPositionR;
         this.primaryStrategy = primPoseStrategy;
         this.fallBackStrategy = fallbackPoseStrategy;
     }

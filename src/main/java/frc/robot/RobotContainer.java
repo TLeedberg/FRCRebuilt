@@ -14,6 +14,7 @@ import frc.robot.commands.vision.EnablePoseUpdates;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Vision;
 import frc.robot.testingdashboard.TestingDashboard;
+import frc.robot.utils.Configuration;
 
 public class RobotContainer {
   private PowerDistribution m_pdBoard;
@@ -21,7 +22,6 @@ public class RobotContainer {
   private final OI m_OI;
 
   public RobotContainer() {
-    RobotMap.init();
 
     m_pdBoard = new PowerDistribution(1, ModuleType.kRev);
     m_pdBoard.setSwitchableChannel(true);

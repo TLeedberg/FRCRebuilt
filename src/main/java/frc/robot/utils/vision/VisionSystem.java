@@ -18,6 +18,7 @@ import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
+import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import frc.robot.Constants.VisionConstants;
@@ -35,7 +36,7 @@ public class VisionSystem {
 
     public VisionSystem(VisionConfig config) {
         m_camera = new PhotonCamera(config.cameraName);
-        m_photonEstimator = new PhotonPoseEstimator(VisionConstants.kTagLayout, config.cameraPosition);
+        m_photonEstimator = new PhotonPoseEstimator(VisionConstants.kTagLayout, new Transform3d(config.cameraPositionT, config.cameraPositionR));
         if((config.primaryStrategy == PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR) ||
             (config.primaryStrategy == PoseStrategy.MULTI_TAG_PNP_ON_RIO)) {
             m_multiStrategy = config.primaryStrategy;
