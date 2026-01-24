@@ -4,8 +4,8 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 import com.revrobotics.spark.config.SparkMaxConfig;
-import com.revrobotics.spark.SparkBase.ResetMode;
-import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.PersistMode;
+import com.revrobotics.ResetMode;
 import frc.robot.RobotMap;
 import frc.robot.testingdashboard.TDNumber;
 import frc.robot.testingdashboard.SubsystemBase;
@@ -32,9 +32,9 @@ public class Intake extends SubsystemBase{
                 .idleMode(IdleMode.kCoast)
                 .smartCurrentLimit(25, 60); //settings from offseason robot, unsure what they mean
 
-            m_ISparkMax1.configure(m_SparkMaxConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters); //unsure what to replace with but works for now i guess
+            m_ISparkMax1.configure(m_SparkMaxConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-            td_currentOutput = new TDNumber(this, "Current", "Current");
+            td_currentOutput = new TDNumber(this, "Intake", "Ground Intake");
                 
         }
     }
