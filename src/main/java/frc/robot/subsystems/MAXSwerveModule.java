@@ -19,6 +19,7 @@ import com.revrobotics.ResetMode;
 import com.revrobotics.PersistMode;
 
 import frc.robot.Constants.SwerveModuleConstants;
+import frc.robot.utils.Configuration;
 
 public class MAXSwerveModule {
   private final SparkBase m_drivingSpark;
@@ -41,14 +42,16 @@ public class MAXSwerveModule {
    * MAXSwerve Module built with NEOs, SPARKS MAX, and a Through Bore
    * Encoder.
    */
-  public MAXSwerveModule(SparkBase driving, SparkBase turning, double chassisAngularOffset) {
-    m_drivingSpark = driving; // new SparkFlex(drivingCANId, MotorType.kBrushless);
-    m_turningSpark = turning; //new SparkMax(turningCANId, MotorType.kBrushless);
+  public MAXSwerveModule(Configuration.ControllerAndConfig driving, 
+                         Configuration.ControllerAndConfig turning,
+                         double chassisAngularOffset) {
+    m_drivingSpark = driving.m_controller; // new SparkFlex(drivingCANId, MotorType.kBrushless);
+    m_turningSpark = turning.m_controller; //new SparkMax(turningCANId, MotorType.kBrushless);
 
     /* Configure the PID, FFF and other properties of the turning motors. Most of these come from 
      * Constants.
     */
-    SparkBaseConfig m_turningConfig = new SparkMaxConfig();
+    SparkBaseConfig m_turningConfig= turning.m_config;
     m_turningConfig.absoluteEncoder.inverted(SwerveModuleConstants.kTurningEncoderInverted);
     m_turningConfig.idleMode(SwerveModuleConstants.kTurningMotorIdleMode);
     m_turningConfig.smartCurrentLimit(SwerveModuleConstants.kTurningMotorCurrentLimit);
@@ -70,7 +73,7 @@ public class MAXSwerveModule {
     /* Configure the PID, FFF and other properties of the driving motors. Most of these come from 
      * Constants.
     */
-    SparkBaseConfig m_drivingConfig = new SparkMaxConfig();
+    SparkBaseConfig m_drivingConfig = driving.m_config;
     m_drivingConfig.idleMode(SwerveModuleConstants.kDrivingMotorIdleMode);
     m_drivingConfig.inverted(false);
     m_drivingConfig.smartCurrentLimit(SwerveModuleConstants.kDrivingMotorCurrentLimit);

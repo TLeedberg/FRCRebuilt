@@ -17,6 +17,9 @@ import com.revrobotics.spark.SparkBase;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkBaseConfig;
+import com.revrobotics.spark.config.SparkFlexConfig;
+import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.geometry.Rotation3d;
@@ -112,9 +115,18 @@ public class Configuration {
     }
   }
 
-  public SparkBase getMotorController(String motorName)
+  public class ControllerAndConfig {
+    public SparkBase m_controller;
+    public SparkBaseConfig m_config;
+    ControllerAndConfig() {
+      m_controller = null;
+      m_config = null;
+    }
+  }
+
+  public ControllerAndConfig getMotorController(String motorName)
   {
-    SparkBase rval = null;
+    ControllerAndConfig rval = new ControllerAndConfig();
     if (m_motorConfigs == null)
     {
       JsonNode motorConfigs = m_config.findValue("motorConfigs");
@@ -136,10 +148,12 @@ public class Configuration {
     switch (whichConfig.m_controllerType)
     {
       case "SparkFlex":
-        rval = new SparkFlex(whichConfig.m_CANid, whichConfig.m_motorType);
+        rval.m_controller = new SparkFlex(whichConfig.m_CANid, whichConfig.m_motorType);
+        rval.m_config = new SparkFlexConfig();
         break;
       case "SparkMax":
-        rval = new SparkMax(whichConfig.m_CANid, whichConfig.m_motorType);
+        rval.m_controller = new SparkMax(whichConfig.m_CANid, whichConfig.m_motorType);
+        rval.m_config = new SparkMaxConfig();
         System.out.println("creating SparkMax with id " + whichConfig.m_CANid);
         break;
       default:
