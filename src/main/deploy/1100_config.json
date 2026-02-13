@@ -105,6 +105,13 @@
        {"varName" : "intakeRollerFreeLimit", "value" : 60}
    ],
 
+   "Chimney" : [
+        {"varName" : "chimneyEnabled", "value" : false},
+        {"varName" : "chimneyMotorCANid", "value" : 14},
+        {"varName" : "chimneyStallLimit", "value" : 0},
+        {"varName" : "chimneyFreeLimit", "value" : 60}
+   ],
+
    "Shooter" : [
         {"varName" : "flywheelEnabled", "value" : false},
         {"varName" : "leftFlywheelCANid", "value" : 10},
@@ -136,7 +143,9 @@
         {"varName" : "turretSoftLimit", "value" : 9.942478},
 
         {"varName" : "hoodAngleMotorCANid", "value" : 13},
-        {"varName" : "chimneyMotorCANid", "value" : 14}
+        {"varName" : "kP", "value" : 0},
+        {"varName" : "kI", "value" : 0},
+        {"varName" : "kD", "value" : 0}
    ],
    "LED" : [
         {"varName" : "LEDPort", "value": 1},
