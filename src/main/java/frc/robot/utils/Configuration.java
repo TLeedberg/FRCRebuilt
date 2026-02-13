@@ -221,6 +221,7 @@ public class Configuration {
       loadSubsystem(subsystem);
       values = m_values.get(subsystem);
     }
+    if (values == null || values.get(name) == null) return 0.0;
     return Double.valueOf(values.get(name).toString()).doubleValue();
   }
 
@@ -232,6 +233,7 @@ public class Configuration {
       loadSubsystem(subsystem);
       values = m_values.get(subsystem);
     }
+    if (values == null || values.get(name) == null) return 0;
     return Integer.valueOf(values.get(name).toString()).intValue();
   }
 
@@ -243,6 +245,7 @@ public class Configuration {
       loadSubsystem(subsystem);
       values = m_values.get(subsystem);
     }
+    if (values == null || values.get(name) == null) return false;
     return Boolean.valueOf(values.get(name).toString()).booleanValue();
   }
 }
