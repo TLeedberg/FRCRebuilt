@@ -13,7 +13,7 @@
 },
 
 "default" : { 
-   "motorConfigs" : {
+    "motorConfigs" : {
        "frontRightTurning" : {"cType":"SparkMax", "mType":"kBrushless", "canid":3},
        "frontRightDrive" :   {"cType":"SparkMax", "mType":"kBrushless", "canid":2},
        "frontLeftTurning" :  {"cType":"SparkMax", "mType":"kBrushless", "canid":5},
@@ -22,20 +22,58 @@
        "backRightDrive" :    {"cType":"SparkMax", "mType":"kBrushless", "canid":8},
        "backLeftTurning" :   {"cType":"SparkMax", "mType":"kBrushless", "canid":7},
        "backLeftDrive" :     {"cType":"SparkMax", "mType":"kBrushless", "canid":6}
-   },
-
-   "Drive" : [
+    },
+  
+    "Drive" : [
+       {"varName" : "frontRightChassisAngularOffset", "value" : 0.0 },
+       {"varName" : "frontLeftChassisAngularOffset", "value" : -1.570796 },
+       {"varName" : "backRightChassisAngularOffset", "value" : 1.570796 },
+       {"varName" : "backLeftChassisAngularOffset", "value" : 3.141593 },
        {"varName" : "kDrivingP", "value" : 0.02}
    ],
 
    "Intake" : [
        {"varName" : "intakeEnabled", "value" : false},
        {"varName" : "intakeRollerCanId", "value" : 16}
-   ],
+    ],
+  
+    "Shooter": [
+        {"varName" : "flywheelEnabled", "value" : false},
+        {"varName" : "leftFlywheelCANid", "value" : 10},
+        {"varName" : "rightFlywheelCANid", "value" : 11},
+
+        {"varName" : "tuneFlywheelPID", "value": 0},
+        {"varName" : "flywheelP", "value": 0},
+        {"varName" : "flywheelI", "value": 0},
+        {"varName" : "flywheelD", "value": 0},
+
+        {"varName" : "flywheelKS", "value": 0},
+        {"varName" : "flywheelKV", "value": 0},
+        {"varName" : "flywheelKA", "value": 0},
+
+        {"varName" : "flywheelVelocityFactor", "value" : 1},
+
+        {"varName" : "turretEnabled", "value" : false},
+        {"varName" : "turretRotationCANid", "value" : 12},
+        {"varName" : "tuneTurretPID", "value" : false},
+
+        {"varName" : "turretP", "value": 0},
+        {"varName" : "turretI", "value": 0},
+        {"varName" : "turretD", "value": 0},
+
+        {"varName" : "turretPositionFactor", "value" : 6.28319},
+
+        {"varName" : "turretDeadzoneStart", "value": 6.28319},
+        {"varName" : "turretHardLimit", "value" : 9.942478},
+        {"varName" : "turretSoftLimit", "value" : 9.942478},
+
+        {"varName" : "hoodAngleMotorCANid", "value" : 13},
+        {"varName" : "chimneyMotorCANid", "value" : 14}
+    ],
 
    "visionConfig" : [
         {"name":"Arducam_OV9782_C","positionT":{"x":0.0,"y":0.0,"z":0.0},"positionR":{"quaternion":{"W":1.0,"X":0.0,"Y":0.0,"Z":0.0}},"primaryStrat":"LOWEST_AMBIGUITY","backupStrat":"CLOSEST_TO_CAMERA_HEIGHT"}
-  ]
+    ]
 },
 
 
@@ -54,6 +92,12 @@
        {"varName" : "kDrivingP", "value" : 0.02},
        {"varName" : "kTurningP", "value" : 1.0}
     ],
+   "Spindex" : [
+       {"varName" : "spindexEnabled", "value" : false},
+       {"varName" : "spindexCanId", "value" : 15},
+       {"varName" : "spindexStallLimit", "value" : 0},
+       {"varName" : "spindexFreeLimit", "value" : 60}
+   ],
    "Intake" : [
        {"varName" : "intakeEnabled", "value" : false},
        {"varName" : "intakeRollerCanId", "value" : 16},
@@ -61,18 +105,50 @@
        {"varName" : "intakeRollerFreeLimit", "value" : 60}
    ],
 
+   "Chimney" : [
+        {"varName" : "chimneyEnabled", "value" : false},
+        {"varName" : "chimneyMotorCANid", "value" : 14},
+        {"varName" : "chimneyStallLimit", "value" : 0},
+        {"varName" : "chimneyFreeLimit", "value" : 60}
+   ],
+
    "Shooter" : [
-        {"varName" : "shooterEnabled", "value" : false },
+        {"varName" : "flywheelEnabled", "value" : false},
         {"varName" : "leftFlywheelCANid", "value" : 10},
         {"varName" : "rightFlywheelCANid", "value" : 11},
+
+        {"varName" : "tuneFlywheelPID", "value": 0},
+        {"varName" : "flywheelP", "value": 0},
+        {"varName" : "flywheelI", "value": 0},
+        {"varName" : "flywheelD", "value": 0},
+
+        {"varName" : "flywheelKS", "value": 0},
+        {"varName" : "flywheelKV", "value": 0},
+        {"varName" : "flywheelKA", "value": 0},
+
+        {"varName" : "flywheelVelocityFactor", "value" : 1},
+
+        {"varName" : "turretEnabled", "value" : false},
         {"varName" : "turretRotationCANid", "value" : 12},
+        {"varName" : "tuneTurretPID", "value" : false},
+
+        {"varName" : "turretP", "value": 0},
+        {"varName" : "turretI", "value": 0},
+        {"varName" : "turretD", "value": 0},
+
+        {"varName" : "turretPositionFactor", "value" : 6.28319},
+
+        {"varName" : "turretDeadzoneStart", "value": 6.28319},
+        {"varName" : "turretHardLimit", "value" : 9.942478},
+        {"varName" : "turretSoftLimit", "value" : 9.942478},
+
         {"varName" : "hoodAngleMotorCANid", "value" : 13},
-        {"varName" : "chimneyMotorCANid", "value" : 14},
         {"varName" : "kP", "value" : 0},
         {"varName" : "kI", "value" : 0},
         {"varName" : "kD", "value" : 0}
    ],
    "LED" : [
+        {"varName" : "LEDPort", "value": 1},
         {"varName" : "stateChangeWarningTime", "value" : 1.5 }
    ],
 

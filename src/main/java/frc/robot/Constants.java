@@ -116,8 +116,10 @@ public final class Constants {
     }
 
     public static final class FieldLocationConstants {
-        // TODO: get actual midfield position
-        public static final double kMidfieldX = 0;
+        // calculated from values in glass
+        public static final double kMidfieldX = Units.feetToMeters(27.13);
+        public static final double kRedAllianceZoneX = Units.feetToMeters(39.0);
+        public static final double kBlueAllianceZoneX = Units.feetToMeters(15.26);
     }
 
     public static final class VisionConstants {
@@ -168,5 +170,11 @@ public final class Constants {
         public static final double DEGREES_PER_REVOLUTION = 360;
         public static final double kClimberLowerLimitInches = 0;
         public static final double kClimberUpperLimitInches = 26.5;
+    }
+
+    public static final class LEDConstants {
+        public static final int LEDLength = 49; // number of LEDs
+        public static final int kPositionSplitIndex = 10;
+        public static final boolean kInversePolarity = true; //dont know what it does but it seems cool
     }
 }

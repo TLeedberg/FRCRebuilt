@@ -99,6 +99,11 @@ public class FieldUtils{
         return (alliance == Alliance.Blue) ^ (robotPose.getX() > FieldLocationConstants.kMidfieldX);
     }
 
+    public boolean inAllianceZone(Pose2d robotPose, Alliance alliance) {
+        boolean red = (alliance == Alliance.Red) && (robotPose.getX() < FieldLocationConstants.kRedAllianceZoneX);
+        boolean blue = (alliance == Alliance.Blue) && (robotPose.getX() > FieldLocationConstants.kBlueAllianceZoneX);
+        return red || blue;
+    }
 
     public char getAutoWinner(){ 
         String gameData = DriverStation.getGameSpecificMessage();
