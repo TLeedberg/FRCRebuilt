@@ -29,7 +29,8 @@
        {"varName" : "frontLeftChassisAngularOffset", "value" : -1.570796 },
        {"varName" : "backRightChassisAngularOffset", "value" : 1.570796 },
        {"varName" : "backLeftChassisAngularOffset", "value" : 3.141593 },
-       {"varName" : "kDrivingP", "value" : 0.02}
+       {"varName" : "kDrivingP", "value" : 0.02},
+       {"varName" : "pinionGearTeeth", "value" : 13}
    ],
 
    "Intake" : [
@@ -89,8 +90,13 @@
        "backLeftDrive" :     {"cType":"SparkMax", "mType":"kBrushless", "canid":6}
    },
    "Drive" : [
+       {"varName" : "frontRightChassisAngularOffset", "value" : 0.0 },
+       {"varName" : "frontLeftChassisAngularOffset", "value" : -1.570796 },
+       {"varName" : "backRightChassisAngularOffset", "value" : 1.570796 },
+       {"varName" : "backLeftChassisAngularOffset", "value" : 3.141593 },
        {"varName" : "kDrivingP", "value" : 0.02},
-       {"varName" : "kTurningP", "value" : 1.0}
+       {"varName" : "kTurningP", "value" : 1.0},
+       {"varName" : "pinionGearTeeth", "value" : 13}
     ],
    "Spindex" : [
        {"varName" : "spindexEnabled", "value" : false},

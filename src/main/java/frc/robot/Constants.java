@@ -31,7 +31,7 @@ public final class Constants {
         public static final double kWheelDiameterMeters = 0.0762;
         public static final double kWheelCircumferenceMeters = kWheelDiameterMeters * Math.PI;
 
-        public static final int kDrivingMotorPinionTeeth = 12;
+        public static final int kDrivingMotorPinionTeeth = Configuration.getInstance().getInt("Drive", "pinionGearTeeth");
         public static final double kDrivingMotorReduction = (45.0*22)/(kDrivingMotorPinionTeeth*15);
 
         public static final double kVortexFreeSpeedRPM = 6784;
