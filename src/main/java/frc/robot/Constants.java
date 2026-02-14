@@ -65,7 +65,7 @@ public final class Constants {
     }
 
     public static final class DriveConstants {
-        public static final double kMaxSpeedMetersPerSecond = 4.92;
+        public static final double kMaxSpeedMetersPerSecond = SwerveModuleConstants.kDriveWheelFreeSpeedRPS;
         public static final double kMaxAngularSpeed = 2 * Math.PI;
 
         // TODO: correct module positions
