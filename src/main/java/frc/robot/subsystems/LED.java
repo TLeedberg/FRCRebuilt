@@ -36,6 +36,7 @@ public class LED extends SubsystemBase{
          * Calculates a color from the LEDPattern's pattern type, stored colors, and speed.
          * @param lightIndex The index of the LED whose color is being calculated.
          * @param tick The time in MS. Should be the same between every call at one time.
+		 * @param numLights The number of lights in the string of LEDs.
          * @return A color to assign to the LED.
          */
         public Color getColor(int lightIndex, int tick, int numLights) {
@@ -61,7 +62,15 @@ public class LED extends SubsystemBase{
             return m_foreground;
         }
 
-        // extend LEDPattern and override runnable() to program the pattern
+        /**
+		 * Overridable method; extend LEDPattern and override runnable() to program
+		 * the pattern. Made as a separate method so getColor doesn't have to be
+		 * overriden, so the built-in patterns can be kept.
+         * @param lightIndex The index of the LED whose color is being calculated.
+         * @param tick The time in MS. Should be the same between every call at one time.
+		 * @param numLights The number of lights in the string of LEDs.
+         * @return A color to assign to the LED.
+		 */
         public Color runnable(int lightIndex, int tick, int numLights) {return Color.kWhite;}
     }
 
