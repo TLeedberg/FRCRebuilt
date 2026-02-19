@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
+import frc.robot.commands.drive.JoystickHeadingDrive;
 import frc.robot.subsystems.Drive;
 import frc.robot.utils.TriggerBuilder;
 import frc.robot.utils.Referrable;
@@ -61,6 +62,7 @@ public class OI {
 			.whileTrue(m_driverXboxController.y(), Drive.getInstance().sysIdDynamic(Direction.kForward))
 			.whileTrue(m_driverXboxController.b(), Drive.getInstance().sysIdDynamic(Direction.kReverse))
 			.onTrue(m_driverXboxController.back(), new InstantCommand(()->Drive.getInstance().zeroHeading()))
+			.whileTrue(m_driverXboxController.rightBumper(), new JoystickHeadingDrive(m_driveInputs))
 
 			.beginSubmap(Submap.AUTO)
 				.switchSubmap(driverIndicator, m_driverXboxController.start(), Submap.MANUAL)
