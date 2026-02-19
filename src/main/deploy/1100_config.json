@@ -27,7 +27,7 @@
     "Drive" : [
        {"varName" : "DriveMotorFreeSpeed", "value" : 6784},
        {"varName" : "WheelDiameter", "value" : 0.0762},
-       {"varName" : "PinionTeeth", "value" : 14},
+       {"varName" : "PinionTeeth", "value" : 13},
        {"varName" : "DrivingkP", "value" : 0.02},
        {"varName" : "DrivingkI", "value" : 0.0},
        {"varName" : "DrivingkD", "value" : 0.0},
@@ -119,7 +119,7 @@
    "Drive" : [
        {"varName" : "DriveMotorFreeSpeed", "value" : 6784},
        {"varName" : "WheelDiameter", "value" : 0.0762},
-       {"varName" : "PinionTeeth", "value" : 14},
+       {"varName" : "PinionTeeth", "value" : 13},
        {"varName" : "DrivingkP", "value" : 0.02},
        {"varName" : "DrivingkI", "value" : 0.0},
        {"varName" : "DrivingkD", "value" : 0.0},
