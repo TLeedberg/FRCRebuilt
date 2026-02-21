@@ -7,14 +7,14 @@ import frc.robot.utils.Configuration;
 public class SpindexerSpin extends Command{
 
     Spindexer m_spindexer;
-    Configuration cfg;
+    double m_spindexerSpeed;
     
 
     public SpindexerSpin(){
-        super(Spindexer.getInstance(), "Spindexer", "Measured Current");
+        super(Spindexer.getInstance(), "Spindexer", "SpindexerSpin");
 
         m_spindexer = Spindexer.getInstance();
-        cfg = Configuration.getInstance();
+        m_spindexerSpeed = Configuration.getInstance().getDouble("Spindex", "spindexSpeed");
     }
 
     @Override 
@@ -23,7 +23,7 @@ public class SpindexerSpin extends Command{
     @Override
     public void execute() {
         
-        m_spindexer.spinIn(cfg.getInt("Spindex", "spindexSpeed"));
+        m_spindexer.spinIn(m_spindexerSpeed);
     }
 
     @Override

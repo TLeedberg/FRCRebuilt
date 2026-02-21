@@ -99,7 +99,7 @@
    "Spindex" : [
        {"varName" : "spindexEnabled", "value" : false},
        {"varName" : "spindexCanId", "value" : 15},
-       {"varname" : "spindexSpeed", "value" : 10},
+       {"varname" : "spindexSpeed", "value" : 1.0},
        {"varName" : "spindexStallLimit", "value" : 0},
        {"varName" : "spindexFreeLimit", "value" : 60}
    ],
