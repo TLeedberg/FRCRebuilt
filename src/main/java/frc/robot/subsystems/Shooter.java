@@ -397,7 +397,8 @@ public class Shooter extends SubsystemBase{
     // see angleToTarget for more info
     enum TurretState {
         SHOOTING, // direct movement, take the shortest available movement
-        FERRYING // indirect movement, try to get turret into the 'free range' closest to hub
+        FERRYING, // indirect movement, try to get turret into the 'free range' closest to hub
+        ROBOT_RELATIVE
     }
     /**
      * Get an angle relative to the field and transform it into an angle for
@@ -483,6 +484,9 @@ public class Shooter extends SubsystemBase{
                 // i wrote two paragraphs explaining why this single statement is cool
                 return robotTargetAngle%Math.PI;
             }
+            case ROBOT_RELATIVE: {
+                return targetAngle;
+            }
         }
 
         return 0;
@@ -508,10 +512,10 @@ public class Shooter extends SubsystemBase{
         }
 
         m_TDturretTargetAngle.set(m_TDturretTargetAngle.get() + m_TDturretSpeed.get() * Constants.schedulerPeriodTime);
-        //Commented out so its easy to tune with robot relative angles, uncomment when ready to test limits and field relative angles
-        // Alliance alliance = DriverStation.getAlliance().orElse(Alliance.Blue);
-        // TurretState state = FieldUtils.getInstance().inAllianceZone(m_Drive.getPose(), alliance) ? TurretState.SHOOTING : TurretState.FERRYING;
-        double controlledAngle = m_TDturretTargetAngle.get();//angleToTarget(m_TDturretTargetAngle.get(), state);
+        Alliance alliance = DriverStation.getAlliance().orElse(Alliance.Blue);
+        TurretState state = m_tuneTurret? TurretState.ROBOT_RELATIVE :
+            (FieldUtils.getInstance().inAllianceZone(m_Drive.getPose(), alliance) ? TurretState.SHOOTING : TurretState.FERRYING);
+        double controlledAngle = angleToTarget(m_TDturretTargetAngle.get(), state);
         m_turretSetpoint = new TrapezoidProfile.State(controlledAngle, m_TDturretSpeed.get());
 
         m_turretState = m_turretProfile.calculate(Constants.schedulerPeriodTime, m_turretState, m_turretSetpoint);
