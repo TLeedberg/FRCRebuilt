@@ -21,14 +21,16 @@ public class Spindexer extends SubsystemBase {
     
     private Spindexer() {
         super("Spindexer");
+
 		m_spindexerEnabled = cfgBool("spindexerEnabled");
+
         if (m_spindexerEnabled) {
 			var spindexerMotorConfig = config().getMotorController("spindexer");
             m_spindexerMotor = spindexerMotorConfig.m_controller;
             m_spindexerConfig = spindexerMotorConfig.m_config;
             m_spindexerConfig
-                .idleMode(IdleMode.kCoast)
-                .smartCurrentLimit(cfgInt("spindexerStallLimit"), cfgInt("spindexerFreeLimit"));
+                .idleMode(IdleMode.kCoast);
+                //.smartCurrentLimit(cfgInt("spindexerStallLimit"), cfgInt("spindexerFreeLimit"));
             
             m_spindexerMotor.configure(m_spindexerConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
