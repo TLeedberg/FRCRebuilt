@@ -23,15 +23,15 @@ public class Unjam extends Command{
         super(Intake.getInstance(), "Intake", "Unjam"); //TODO: please allow for not one specific subsystem
 
         m_intake = Intake.getInstance();
-        m_intakeSpeed = Configuration.getInstance().getDouble("Intake", "intakeSpeed");
-        m_intakeDeployerSpeed = Configuration.getInstance().getDouble("Intake", "intakeDeployerSpeed");
+        m_intakeSpeed = Configuration.getInstance().getDouble("Intake", "rollerUnjamSpeed");
+        m_intakeDeployerSpeed = Configuration.getInstance().getDouble("Intake", "deployerUnjamSpeed");
 
         m_spindexer = Spindexer.getInstance();
-        m_spindexerSpeed = Configuration.getInstance().getDouble("Spindexer", "spindexerSpeed");
+        m_spindexerSpeed = Configuration.getInstance().getDouble("Spindexer", "spindexerUnjamSpeed");
 
         m_shooter = Shooter.getInstance();
-        m_chimneySpeed = Configuration.getInstance().getDouble("Chimney", "chimneySpeed");
-        m_flywheelSpeed = Constants.ShooterConstants.kFlywheelVelocityFactor; //right variable?
+        m_chimneySpeed = Configuration.getInstance().getDouble("Shooter", "chimneyUnjamSpeed");
+        m_flywheelSpeed = Configuration.getInstance().getDouble("Shooter", "flywheelUnjamSpeed");
 
         addRequirements(m_intake);
         addRequirements(m_spindexer);
