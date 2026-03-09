@@ -607,18 +607,22 @@ public class Shooter extends SubsystemBase {
         }
         case CALIBRATE_FULL: {
             m_turretMotor.set(m_turretCalibratedForward ? -0.5 : 0.5);
+            //System.out.println(m_turretCalibratedForward);
 
             HardLimitDirection hardLimit = m_turretCurrentLimit.check();
             if (hardLimit == HardLimitDirection.kForward) {
                 m_turretCalibratedForward = true;
                 m_turretMotor.getEncoder().setPosition(0);
+                m_turretMotor.set(-0.5);
             } else if (hardLimit == HardLimitDirection.kReverse) {
                 m_turretCalibratedReverse = true;
 
                 double range = m_turretMotor.getEncoder().getPosition();
                 m_turretForwardHardLimit = -range/2.0;
                 m_turretReverseHardLimit = range/2.0;
+                //System.out.println("Setting encoder to " + m_turretReverseHardLimit);
                 m_turretMotor.getEncoder().setPosition(m_turretReverseHardLimit);
+                m_turretState = new TrapezoidProfile.State(m_turretReverseHardLimit, 0);
 
                 m_turretMotor.set(0);
                 m_turretCalibrationEnabled = false;
