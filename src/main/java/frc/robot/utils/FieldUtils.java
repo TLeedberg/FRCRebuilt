@@ -6,6 +6,7 @@ package frc.robot.utils;
 
 import java.util.Optional;
 
+import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -19,6 +20,7 @@ import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.Constants.VisionConstants;
+import frc.robot.Constants;
 import frc.robot.Constants.FieldLocationConstants;
 
 public class FieldUtils{
@@ -140,6 +142,18 @@ public class FieldUtils{
     }
     public void startGameTimer(){
         timer.start();
+    }
+
+    public Pose2d redPoseToAlliancePose(Pose2d pose) {
+        AprilTagFieldLayout layout = Constants.VisionConstants.kTagLayout;
+        return (DriverStation.getAlliance().orElse(Alliance.Red) == Alliance.Red) ? pose :
+                pose.rotateAround(new Translation2d(layout.getFieldLength()/2.0, layout.getFieldWidth()/2.0), Rotation2d.k180deg);
+    }
+
+    public Pose2d bluePoseToAlliancePose(Pose2d pose) {
+        AprilTagFieldLayout layout = Constants.VisionConstants.kTagLayout;
+        return (DriverStation.getAlliance().orElse(Alliance.Blue) == Alliance.Blue) ? pose :
+                pose.rotateAround(new Translation2d(layout.getFieldLength()/2.0, layout.getFieldWidth()/2.0), Rotation2d.k180deg);
     }
 
     public enum GameState {

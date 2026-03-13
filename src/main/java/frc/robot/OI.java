@@ -2,6 +2,9 @@ package frc.robot;
 
 import java.util.function.Supplier;
 
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.XboxController;
@@ -19,6 +22,7 @@ import frc.robot.commands.shooter.CalibrateTurretFull;
 import frc.robot.commands.shooter.ChimneyDown;
 import frc.robot.commands.shooter.ChimneyUp;
 import frc.robot.commands.shooter.ManualShooterControl;
+import frc.robot.commands.shooter.ShootMap;
 import frc.robot.commands.shooter.ShootSpecified;
 import frc.robot.commands.shooter.ShootToPose;
 import frc.robot.commands.spindexer.SpindexerReverse;
@@ -130,9 +134,9 @@ public class OI {
 					new SpindexerReverse()
 				))
 
-				.whileTrue(m_operatorXboxController.leftBumper(), new ShootToPose(() -> {
+				/*.whileTrue(m_operatorXboxController.leftBumper(), new ShootToPose(() -> {
 					return FieldUtils.getInstance().getHubPose(DriverStation.getAlliance().orElse(Alliance.Blue));
-				}))
+				}))*/
 
 				// midfield
 				.whileTrue(m_operatorXboxController.povUp(), new ShootSpecified(3000, -18, 0))
@@ -151,6 +155,15 @@ public class OI {
 				// ferry
 				.whileTrue(m_operatorXboxController.a(), new ShootSpecified(4000, -35, 0))
 
+				/*.whileTrue(m_operatorXboxController.a(), new ShootMap(
+					new ShootMap.ShootMapSetpoint(
+						new Pose2d(),
+						0, 0, 0),
+					new ShootMap.ShootMapSetpoint(
+						new Pose2d(new Translation2d(16, 8), Rotation2d.kZero),
+						3000, -20, 0
+					)))*/
+
 				.switchSubmap(operatorIndicator, m_operatorXboxController.start(), Submap.MANUAL)
 			.endSubmap()
 
@@ -163,8 +176,8 @@ public class OI {
 					new IntakeIn())
 				)
 
-				.onTrue(m_operatorXboxController.x(), new StopTurretCalibration())
-				.onTrue(m_operatorXboxController.b(), new CalibrateTurretFull())
+				//.onTrue(m_operatorXboxController.x(), new StopTurretCalibration())
+				//.onTrue(m_operatorXboxController.b(), new CalibrateTurretFull())
 
 				.switchSubmap(operatorIndicator, m_operatorXboxController.start(), Submap.AUTO)
 			.endSubmap()
