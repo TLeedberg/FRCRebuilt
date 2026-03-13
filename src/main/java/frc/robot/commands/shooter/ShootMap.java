@@ -2,18 +2,25 @@ package frc.robot.commands.shooter;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Shooter;
 import frc.robot.testingdashboard.Command;
+import frc.robot.utils.FieldUtils;
 
 public class ShootMap extends Command {
     private final Shooter m_Shooter;
     private final Drive m_Drive;
 
-    public final ShootMapSetpoint m_pointMin;
-    public final ShootMapSetpoint m_pointMax;
+    private final ShootMapSetpoint m_pointMin;
+    private final ShootMapSetpoint m_pointMax;
+
+    private final Alliance m_alliance;
+    private final Target m_target;
 
     public static class ShootMapSetpoint {
         public final Pose2d pose;
@@ -29,16 +36,48 @@ public class ShootMap extends Command {
         }
     }
 
-    public ShootMap(ShootMapSetpoint a, ShootMapSetpoint b) {
+    public static enum Target {
+        SHOOT_HUB,
+        FERRY
+    }
+
+    public ShootMap(ShootMapSetpoint a, ShootMapSetpoint b, Alliance setpointAlliance, Target target) {
         super(Shooter.getInstance(), "Shooting", "ShootMap", false);
 
         m_Shooter = Shooter.getInstance();
         m_Drive = Drive.getInstance();
 
+        m_alliance = setpointAlliance;
+        m_target = target;
+
         assert  (a.pose.getX() <= b.pose.getX() &&
                  a.pose.getY() <= b.pose.getY()) ||
                 (a.pose.getX() >= b.pose.getX() &&
                  a.pose.getY() >= b.pose.getY());
+
+        if (setpointAlliance == Alliance.Blue) {
+            a = new ShootMapSetpoint(
+                FieldUtils.getInstance().bluePoseToAlliancePose(a.pose),
+                a.flywheel,
+                a.hood,
+                a.turret);
+            b = new ShootMapSetpoint(
+                FieldUtils.getInstance().bluePoseToAlliancePose(b.pose),
+                b.flywheel,
+                b.hood,
+                b.turret);
+        } else {
+            a = new ShootMapSetpoint(
+                FieldUtils.getInstance().redPoseToAlliancePose(a.pose),
+                a.flywheel,
+                a.hood,
+                a.turret);
+            b = new ShootMapSetpoint(
+                FieldUtils.getInstance().redPoseToAlliancePose(b.pose),
+                b.flywheel,
+                b.hood,
+                b.turret);
+        }
 
         if (a.pose.getX() < b.pose.getX()) {
             m_pointMin = a;
@@ -70,9 +109,9 @@ public class ShootMap extends Command {
         Translation2d tb = b.getTranslation();
         Translation2d ti = ta.plus(tb.minus(ta).times(t));
         
-        Rotation2d ra = a.getRotation();
-        Rotation2d rb = b.getRotation();
-        Rotation2d ri = ra.plus(rb.minus(ra).times(t));
+        double ra = a.getRotation().getRadians();
+        double rb = b.getRotation().getRadians();
+        Rotation2d ri = new Rotation2d(ra + (rb - ra) * t);
 
         return new Pose2d(ti, ri);
     }
@@ -90,23 +129,41 @@ public class ShootMap extends Command {
     
     @Override
     public void execute() {
-        m_Shooter.setTurretRobotRelative(true);
-
         Pose2d pose = m_Drive.getPose();
         pose = clampToPoints(pose);
 
         double weightMin = pose.getTranslation().getDistance(m_pointMin.pose.getTranslation());
         double weightMax = pose.getTranslation().getDistance(m_pointMax.pose.getTranslation());
-        double weight = weightMin/(weightMin+weightMax);
+        double weight = weightMin/((weightMin+weightMax) > 0 ? weightMin+weightMax : 1);
 
         ShootMapSetpoint setpoint = interpolate(weight);
+        if (Double.isNaN(setpoint.pose.getRotation().getRadians())) return;
+        if (Double.isNaN(setpoint.turret)) return;
+        if (Double.isNaN(setpoint.flywheel)) return;
+        if (Double.isNaN(setpoint.hood)) return;
 
-        double intended = setpoint.pose.getRotation().getRadians();
-        double actual = pose.getRotation().getRadians();
-        double error = intended - actual;
-        error = MathUtil.clamp(error, Math.toRadians(-30), Math.toRadians(30));
-        m_Shooter.setTurretTarget(setpoint.turret - error, 0);
+        double turretAngle;
+        if (m_Shooter.getTurretRobotRelative()) {
+            double intended = setpoint.pose.getRotation().getRadians();
+            double actual = pose.getRotation().getRadians();
+            //double error = intended - actual;
+            //error = MathUtil.clamp(error, Math.toRadians(-30), Math.toRadians(30));
+            double error = 0;
+            turretAngle = setpoint.turret - error;
+        } else {
+            Pose3d turretPose = m_Shooter.getTurretPose();
+            Translation2d turretPosition = turretPose.getTranslation().toTranslation2d();
+            Rotation2d angle;
+            if (m_target == Target.SHOOT_HUB)
+                angle = turretPosition.minus(FieldUtils.getInstance().getHubPose(m_alliance).getTranslation().toTranslation2d()).getAngle();
+            else
+                angle = Rotation2d.kZero;
+            turretAngle = angle.getRadians();
+        }
 
+        if (Double.isNaN(turretAngle)) return;
+
+        m_Shooter.setTurretTarget(turretAngle, 0);
         m_Shooter.setFlywheelTarget(setpoint.flywheel);
         m_Shooter.setHoodTarget(setpoint.hood);
     }

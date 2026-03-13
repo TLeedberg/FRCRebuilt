@@ -123,6 +123,7 @@ public class Shooter extends SubsystemBase {
     private Pose3d m_turretPose;
 
     private boolean m_turretRobotRelative;
+    private boolean m_turretControl;
 
     // Hood
     private final boolean m_hoodEnabled;
@@ -317,6 +318,7 @@ public class Shooter extends SubsystemBase {
         m_turretState = new TrapezoidProfile.State(initPosition, 0.0);
 
         m_turretRobotRelative = cfgBool("turretRobotRelative");
+        m_turretControl = true;
     }
 
     private void setupHood() {
@@ -605,6 +607,14 @@ public class Shooter extends SubsystemBase {
         m_turretRobotRelative = rr;
     }
 
+    public boolean getTurretRobotRelative() {
+        return m_turretRobotRelative;
+    }
+
+    public void setTurretControl(boolean control) {
+        m_turretControl = control;
+    }
+
     public void enableTurretCalibration(TurretCalibration mode) {
         m_turretCalibrationEnabled = true;
         m_turretCalibratedForward = false;
@@ -618,6 +628,18 @@ public class Shooter extends SubsystemBase {
 
     public boolean isTurretCalibrating() {
         return m_turretCalibrationEnabled;
+    }
+
+    public void setTurretRawSpeed(double speed) {
+        m_turretMotor.set(speed);
+    }
+
+    public void forceTurretZero() {
+        m_turretMotor.getEncoder().setPosition(0);
+        m_TDturretTargetAngle.set(0);
+        m_TDturretSpeed.set(0);
+        m_turretState = new TrapezoidProfile.State(0,0);
+        m_turretSetpoint = new TrapezoidProfile.State(0,0);
     }
 
     private void runTurretCalibration() {
@@ -673,6 +695,8 @@ public class Shooter extends SubsystemBase {
             runTurretCalibration();
             return;
         }
+
+        if (!m_turretControl) return;
 
         if (m_tuneTurret) {
             if (m_TDturretP.get() != m_turretP ||

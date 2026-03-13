@@ -369,6 +369,8 @@
 
         {"varName" : "tuneTurret", "value" : true},
 
+        {"varName" : "turretRobotRelative", "value" : true},
+
         {"varName" : "turretP", "value": 0.50},
         {"varName" : "turretI", "value": 0},
         {"varName" : "turretD", "value": 0},
@@ -385,8 +387,8 @@
 
         {"varName" : "turretSoftLimitWidth", "value" : 0.1745},
 
-        {"varName" : "turretForwardHardLimit", "value" : 3.665},
-        {"varName" : "turretReverseHardLimit", "value" : -3.665},
+        {"varName" : "turretForwardHardLimit", "value" : 2.967},
+        {"varName" : "turretReverseHardLimit", "value" : -2.967},
         {"varName" : "turretCurrentTrip", "value" : 20},
         {"varName" : "turretZeroSpeedTolerance", "value" : 0.05},
 

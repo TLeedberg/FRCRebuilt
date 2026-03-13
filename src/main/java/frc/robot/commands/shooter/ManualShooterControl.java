@@ -33,16 +33,14 @@ public class ManualShooterControl extends Command{
     public void execute() {
         XboxController operator = m_OI.getOperatorController();
 
-        m_turretAngle += MathUtil.applyDeadband(operator.getLeftX(), 0.05) * Constants.schedulerPeriodTime * 0.5;
-        m_turretAngle = m_turretAngle%Math.PI;
+        m_turretAngle += MathUtil.applyDeadband(-operator.getLeftX(), 0.05) * Constants.schedulerPeriodTime * 0.5;
+        m_turretAngle = MathUtil.clamp(m_turretAngle, Math.toRadians(-160), Math.toRadians(160));
         m_hoodAngle += MathUtil.applyDeadband(operator.getRightY(), 0.05) * Constants.schedulerPeriodTime * 10.0;
-        m_hoodAngle = Math.max(Math.min(m_hoodAngle, 0), -40);
-
-        int pov = operator.getPOV();
+        m_hoodAngle = Math.max(m_hoodAngle, -40);
 
         m_flywheelSpeed +=
-            ((pov == 0) ? Constants.schedulerPeriodTime * 2000 : 0) -
-            ((pov == 180) ? Constants.schedulerPeriodTime * 2000 : 0);
+            (operator.getRightBumperButton() ? Constants.schedulerPeriodTime * 2000 : 0) -
+            (operator.getLeftBumperButton() ? Constants.schedulerPeriodTime * 2000 : 0);
         m_flywheelSpeed = Math.min(Math.max(m_flywheelSpeed, 0), 6000);
 
         m_Shooter.setTurretTarget(m_turretAngle, 0);

@@ -22,6 +22,7 @@ import frc.robot.commands.shooter.CalibrateTurretFull;
 import frc.robot.commands.shooter.ChimneyDown;
 import frc.robot.commands.shooter.ChimneyUp;
 import frc.robot.commands.shooter.ManualShooterControl;
+import frc.robot.commands.shooter.RealManualTurretControl;
 import frc.robot.commands.shooter.ShootMap;
 import frc.robot.commands.shooter.ShootSpecified;
 import frc.robot.commands.shooter.ShootToPose;
@@ -30,6 +31,7 @@ import frc.robot.commands.spindexer.SpindexerSpin;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Shooter;
+import frc.robot.testingdashboard.TDSendable;
 import frc.robot.utils.TriggerBuilder;
 import frc.robot.utils.FieldUtils;
 import frc.robot.utils.Referrable;
@@ -55,6 +57,8 @@ public class OI {
 
 	private final Referrable<Submap> m_operatorSubmap = new Referrable<Submap>(Submap.AUTO);
 	private final Referrable<Submap> m_driverSubmap = new Referrable<Submap>(Submap.MANUAL);
+
+	//private final TDSendable m_operatorSubmapSendable = new TDSendable(OI, null, null, getDriverController())
 
     public static OI getInstance() {
         if (m_OI == null) m_OI = new OI();
@@ -129,55 +133,90 @@ public class OI {
 					new SpindexerSpin()
 				))
 
-				.whileTrue(m_operatorXboxController.b(), Commands.parallel(
+				.whileTrue(m_operatorXboxController.leftBumper(), Commands.parallel(
 					new ChimneyDown(),
 					new SpindexerReverse()
 				))
 
-				/*.whileTrue(m_operatorXboxController.leftBumper(), new ShootToPose(() -> {
-					return FieldUtils.getInstance().getHubPose(DriverStation.getAlliance().orElse(Alliance.Blue));
-				}))*/
-
 				// midfield
-				.whileTrue(m_operatorXboxController.povUp(), new ShootSpecified(3000, -18, 0))
+				.whileTrue(m_operatorXboxController.povUp(), new ShootMap(
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(2.5,4), Rotation2d.kZero), 3000, -18, 0),
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(2.5,4), Rotation2d.kZero), 3000, -18, 0),
+					Alliance.Blue,
+					ShootMap.Target.SHOOT_HUB
+				))
 				// left trench
-				.whileTrue(m_operatorXboxController.povUpLeft(), new ShootSpecified(3000, -21.8, 0.13))
+				.whileTrue(m_operatorXboxController.povUpLeft(), new ShootMap(
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(4.32,7.5), Rotation2d.kCW_90deg), 3000, -21.8, 0.13),
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(4.32,7.5), Rotation2d.kCW_90deg), 3000, -21.8, 0.13),
+					Alliance.Blue,
+					ShootMap.Target.SHOOT_HUB
+				))
 				// right trench
-				.whileTrue(m_operatorXboxController.povUpRight(), new ShootSpecified(3000, -21.8, -0.35))
+				.whileTrue(m_operatorXboxController.povUpRight(), new ShootMap(
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(4.32,7.5), Rotation2d.kCCW_90deg), 3000, -21.8, -0.35),
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(4.32,7.5), Rotation2d.kCCW_90deg), 3000, -21.8, -0.35),
+					Alliance.Blue,
+					ShootMap.Target.SHOOT_HUB
+				))
 
 				// ladder
-				.whileTrue(m_operatorXboxController.povDown(), new ShootSpecified(3100, -25, 0))
+				.whileTrue(m_operatorXboxController.povDown(), new ShootMap(
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(1.5,4), Rotation2d.kZero), 3100, -25, 0),
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(1.5,4), Rotation2d.kZero), 3100, -25, 0),
+					Alliance.Blue,
+					ShootMap.Target.SHOOT_HUB
+				))
 				// left corner
-				.whileTrue(m_operatorXboxController.povDownLeft(), new ShootSpecified(3400, -35, -0.77))
+				.whileTrue(m_operatorXboxController.povDownLeft(), new ShootMap(
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(0.5,7.5), Rotation2d.kZero), 3400, -35, -0.77),
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(0.5,7.5), Rotation2d.kZero), 3400, -35, -0.77),
+					Alliance.Blue,
+					ShootMap.Target.SHOOT_HUB
+				))
 				// right corner
-				.whileTrue(m_operatorXboxController.povDownRight(), new ShootSpecified(3400, -35, 0.59))
+				.whileTrue(m_operatorXboxController.povDownRight(), new ShootMap(
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(0.5,0.5), Rotation2d.kZero), 3400, -35, 0.59),
+					new ShootMap.ShootMapSetpoint(new Pose2d(new Translation2d(0.5,0.5), Rotation2d.kZero), 3400, -35, 0.59),
+					Alliance.Blue,
+					ShootMap.Target.SHOOT_HUB
+				))
 
-				// ferry
-				.whileTrue(m_operatorXboxController.a(), new ShootSpecified(4000, -35, 0))
-
-				/*.whileTrue(m_operatorXboxController.a(), new ShootMap(
-					new ShootMap.ShootMapSetpoint(
-						new Pose2d(),
-						0, 0, 0),
-					new ShootMap.ShootMapSetpoint(
-						new Pose2d(new Translation2d(16, 8), Rotation2d.kZero),
-						3000, -20, 0
-					)))*/
+				// ferry 0
+				.whileTrue(m_operatorXboxController.y(), new ShootMap(
+					new ShootMap.ShootMapSetpoint(new Pose2d(Translation2d.kZero, Rotation2d.kZero), 4000, -35, 0),
+					new ShootMap.ShootMapSetpoint(new Pose2d(Translation2d.kZero, Rotation2d.kZero), 4000, -35, 0),
+					Alliance.Blue,
+					ShootMap.Target.FERRY
+				))
+				// ferry clockwise 90
+				.whileTrue(m_operatorXboxController.b(), new ShootMap(
+					new ShootMap.ShootMapSetpoint(new Pose2d(Translation2d.kZero, Rotation2d.kCW_90deg), 4000, -35, Math.PI/2),
+					new ShootMap.ShootMapSetpoint(new Pose2d(Translation2d.kZero, Rotation2d.kCW_90deg), 4000, -35, Math.PI/2),
+					Alliance.Blue,
+					ShootMap.Target.FERRY
+				))
+				// ferry counter clockwise 90
+				.whileTrue(m_operatorXboxController.x(), new ShootMap(
+					new ShootMap.ShootMapSetpoint(new Pose2d(Translation2d.kZero, Rotation2d.kCCW_90deg), 4000, -35, -Math.PI/2),
+					new ShootMap.ShootMapSetpoint(new Pose2d(Translation2d.kZero, Rotation2d.kCCW_90deg), 4000, -35, -Math.PI/2),
+					Alliance.Blue,
+					ShootMap.Target.FERRY
+				))
 
 				.switchSubmap(operatorIndicator, m_operatorXboxController.start(), Submap.MANUAL)
 			.endSubmap()
 
 			.beginSubmap(Submap.MANUAL)
-				.map(m_operatorXboxController.a(), new ManualShooterControl(), Trigger::toggleOnTrue)
+				.onTrue(m_operatorXboxController.a(), Commands.runOnce(()->{Shooter.getInstance().setTurretRobotRelative(true);}, Shooter.getInstance()))
+				.onTrue(m_operatorXboxController.y(), Commands.runOnce(()->{Shooter.getInstance().setTurretRobotRelative(false);}, Shooter.getInstance()))
+				.onTrue(m_operatorXboxController.x(), new StopTurretCalibration())
+				.onTrue(m_operatorXboxController.b(), new CalibrateTurretFull())
 
-				.whileTrue(m_operatorXboxController.y(), Commands.parallel(
-					new ChimneyUp(),
-					new SpindexerSpin(),
-					new IntakeIn())
-				)
+				.map(m_operatorXboxController.povUp(), new RealManualTurretControl(), Trigger::toggleOnTrue)
+				.map(m_operatorXboxController.povLeft(), new ManualShooterControl(), Trigger::toggleOnTrue)
 
-				//.onTrue(m_operatorXboxController.x(), new StopTurretCalibration())
-				//.onTrue(m_operatorXboxController.b(), new CalibrateTurretFull())
+				.onTrue(m_operatorXboxController.povDown(), Commands.runOnce(()->{Shooter.getInstance().forceTurretZero();}, Shooter.getInstance()))
 
 				.switchSubmap(operatorIndicator, m_operatorXboxController.start(), Submap.AUTO)
 			.endSubmap()
