@@ -110,7 +110,6 @@ public class OI {
 
 				.whileTrue(m_driverXboxController.leftTrigger(), new DeployerOut())
 				.whileTrue(m_driverXboxController.rightTrigger(), new DeployerIn())
-
 				.whileTrue(m_driverXboxController.leftBumper(), new IntakeIn())
 				.whileTrue(m_driverXboxController.rightBumper(), new IntakeAAAAA())
 
@@ -225,6 +224,17 @@ public class OI {
 				.onTrue(m_operatorXboxController.y(), Commands.runOnce(()->{Shooter.getInstance().setTurretRobotRelative(false);}, Shooter.getInstance()))
 				.onTrue(m_operatorXboxController.x(), new StopTurretCalibration())
 				.onTrue(m_operatorXboxController.b(), new CalibrateTurretFull())
+
+
+				.whileTrue(m_operatorXboxController.rightTrigger(), Commands.parallel(
+					new ChimneyUp(),
+					new SpindexerSpin()
+				))
+				.whileTrue(m_operatorXboxController.leftTrigger(), Commands.parallel(
+					new ChimneyDown(),
+					new SpindexerReverse()
+				))
+
 
 				.map(m_operatorXboxController.povUp(), new RealManualTurretControl(), Trigger::toggleOnTrue)
 				.map(m_operatorXboxController.povLeft(), new ManualShooterControl(), Trigger::toggleOnTrue)
