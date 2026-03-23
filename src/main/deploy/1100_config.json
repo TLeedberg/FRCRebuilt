@@ -380,9 +380,9 @@
 
         {"varName" : "turretEnabled", "value" : true},
 
-        {"varName" : "tuneTurret", "value" : true},
+        {"varName" : "tuneTurret", "value" : false},
 
-        {"varName" : "turretRobotRelative", "value" : true},
+        {"varName" : "turretRobotRelative", "value" : false},
 
         {"varName" : "turretP", "value": 0.5},
         {"varName" : "turretI", "value": 0},
@@ -408,9 +408,9 @@
         {"varName" : "turretStallCurrentLimit", "value" : 25},
         {"varName" : "turretFreeCurrentLimit", "value" : 30},
 
-        {"varName" : "turretPositionX", "value" : -0.5},
-        {"varName" : "turretPositionY", "value" : 0.5},
-        {"varName" : "turretPositionZ", "value" : 0.3},
+        {"varName" : "turretPositionX", "value" : -0.140},
+        {"varName" : "turretPositionY", "value" : -0.133},
+        {"varName" : "turretPositionZ", "value" : 0.337},
 
 		{"varName" : "hoodEnabled", "value" : true},
 
@@ -423,13 +423,14 @@
         {"varName" : "hoodI", "value" : 0},
         {"varName" : "hoodD", "value" : 0},
 
-        {"varName" : "hoodPlanetaryRatio", "value" : 20},
-        {"varName" : "hoodPinionTeeth", "value" : 10},
-        {"varName" : "hoodLanternTeeth", "value" : 128},
+        {"varName" : "hoodGearRatioNumerator", "value" : 3},
+        {"varName" : "hoodGearRatioDenominator", "value" : 1024},
+
         {"varName" : "hoodMotorFreeSpeed", "value" : 5676},
         {"varName" : "hoodMaxAcceleration", "value" : 720},
         {"varName" : "hoodMaxAngle", "value" : 0},
         {"varName" : "hoodMinAngle", "value": -40},
+        {"varName" : "hoodAngleOffset", "value" : 10},
         {"varName" : "hoodTolerance", "value" : 0.5},
 
 		{"varName" : "chimneyEnabled", "value" : true},
