@@ -15,6 +15,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.commands.drive.SwerveDrive;
 import frc.robot.commands.drive.YoureUnderArrest;
+import frc.robot.commands.intake.IntakeIn;
+import frc.robot.commands.intake.IntakeIntake;
+import frc.robot.commands.intake.IntakeOutake;
+import frc.robot.commands.intake.DeployerOut;
 import frc.robot.commands.shooter.ChimneyUp;
 import frc.robot.commands.shooter.CrawlingThroughTheTrench;
 import frc.robot.commands.shooter.FuelRainbowHub;
@@ -89,6 +93,9 @@ public class RobotContainer {
     new FuelRainbowHub();
     new FuelRainbowLeftTrench();
     new FuelRainbowRightTrench();
+
+    new IntakeIn();
+    new DeployerOut();
 
     new SpindexerSpin();
     new ChimneyUp();

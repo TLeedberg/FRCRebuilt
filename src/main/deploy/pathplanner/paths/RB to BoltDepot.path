@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.5534356884057967,
-        "y": 1.4600832767210148
+        "x": 4.030799798657025,
+        "y": 0.6487748119212962
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.780045562236196,
-        "y": 2.609272376666053
+        "x": 2.7457900028935187,
+        "y": 1.160799406828704
       },
       "isLocked": false,
       "linkedName": "RB"
     },
     {
       "anchor": {
-        "x": 0.5434013247282607,
-        "y": 5.945019587862318
+        "x": 2.5162843605324077,
+        "y": 3.6929722945601853
       },
       "prevControl": {
-        "x": 1.6854695991847826,
-        "y": 5.488336050724638
+        "x": 2.720757976617155,
+        "y": 2.7419423563659198
+      },
+      "nextControl": {
+        "x": 2.239276692708334,
+        "y": 4.981366319444444
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 0.5470498408564819,
+        "y": 7.071914713541666
+      },
+      "prevControl": {
+        "x": 2.7599618778935184,
+        "y": 7.600341941550926
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,13 +58,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Base Pack",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

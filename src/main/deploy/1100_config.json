@@ -345,7 +345,7 @@
 	"Intake" : [
 		{"varName" : "rollerEnabled", "value" : true},
 
-		{"varName" : "rollerSpeed", "value" : 0.5}, 
+		{"varName" : "rollerSpeed", "value" : 0.7}, 
 		{"varName" : "rollerStallLimit", "value" : 10},
 		{"varName" : "rollerFreeLimit", "value" : 40},
 

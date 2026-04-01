@@ -45,9 +45,9 @@
     "rotation": -89.61810451456196
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DLC",
   "idealStartingState": {
-    "velocity": 1.9,
+    "velocity": 5.1,
     "rotation": -90.0
   },
   "useDefaultConstraints": true

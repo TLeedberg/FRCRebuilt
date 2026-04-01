@@ -3,32 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.543482855902778,
-        "y": 6.626353587962963
+        "x": 4.004070843446602,
+        "y": 7.419978587962963
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.590984881365741,
-        "y": 7.547131799768518
+        "x": 4.801546070480864,
+        "y": 7.385919145201886
       },
       "isLocked": false,
       "linkedName": "LB"
-    },
-    {
-      "anchor": {
-        "x": 4.434277054398149,
-        "y": 7.419978587962963
-      },
-      "prevControl": {
-        "x": 3.689336113781996,
-        "y": 7.42038981674608
-      },
-      "nextControl": {
-        "x": 5.385104890046297,
-        "y": 7.419453703703704
-      },
-      "isLocked": false,
-      "linkedName": null
     },
     {
       "anchor": {
@@ -36,8 +20,8 @@
         "y": 7.419978587962963
       },
       "prevControl": {
-        "x": 5.046822690217391,
-        "y": 7.420691745923913
+        "x": 3.0644517226104835,
+        "y": 7.430725325749606
       },
       "nextControl": null,
       "isLocked": false,
@@ -57,14 +41,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 3.9,
-    "rotation": 0.0
+    "velocity": 5.1,
+    "rotation": 90.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DLC",
   "idealStartingState": {
     "velocity": 0.0,
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

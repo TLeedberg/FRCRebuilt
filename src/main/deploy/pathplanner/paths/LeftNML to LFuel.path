@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.891230242300725,
-        "y": 7.419978587962963
+        "x": 6.755860510330233,
+        "y": 6.8837760325031425
       },
       "isLocked": false,
       "linkedName": "LeftNML"
     },
     {
       "anchor": {
-        "x": 7.818297158061593,
-        "y": 7.075996829710146
+        "x": 8.086404733009708,
+        "y": 7.036867277140336
       },
       "prevControl": {
-        "x": 6.818297158061593,
-        "y": 7.075996829710146
+        "x": 6.769782861643798,
+        "y": 6.537339186932308
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0.0,
-    "rotation": -90.0
+    "rotation": -111.17486280316169
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DLC",
   "idealStartingState": {
-    "velocity": 3.9,
-    "rotation": 0.0
+    "velocity": 5.1,
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

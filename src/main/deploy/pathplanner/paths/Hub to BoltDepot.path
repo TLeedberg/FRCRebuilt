@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.796220486111111,
-        "y": 3.585764684606482
+        "x": 2.087478963909165,
+        "y": 4.031867810235507
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.753305590798765,
-        "y": 5.719952214805826
+        "x": 1.3693948508134546,
+        "y": 4.947819279703975
       },
       "isLocked": false,
-      "linkedName": "closeMidMid"
+      "linkedName": "HubBack"
     },
     {
       "anchor": {
-        "x": 3.9871989463812882,
-        "y": 7.42655367387467
+        "x": 0.5470498408564819,
+        "y": 7.071914713541666
       },
       "prevControl": {
-        "x": 7.27062037037037,
-        "y": 7.68150217013889
+        "x": 1.6662717964314682,
+        "y": 7.115091304237632
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "LeftShoot"
+      "linkedName": "HomeDepot"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "DLC",
+  "folder": "Base Pack",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -89.61810451456196
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

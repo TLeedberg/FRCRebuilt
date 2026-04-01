@@ -20,7 +20,7 @@
         "y": 0.0
       },
       "prevControl": {
-        "x": -1.5308084989341915e-17,
+        "x": -4.0203066241915915e-17,
         "y": 0.25
       },
       "nextControl": null,
@@ -45,7 +45,7 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Gryo",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

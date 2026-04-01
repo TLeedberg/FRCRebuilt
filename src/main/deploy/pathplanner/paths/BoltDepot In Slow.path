@@ -3,33 +3,47 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.2832043704710143,
-        "y": 1.4600832767210148
+        "x": 0.5470498408564819,
+        "y": 7.071914713541666
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.2156312273550727,
-        "y": 2.3125523663949274
+        "x": 0.547022705009476,
+        "y": 6.0676376899310025
       },
       "isLocked": false,
-      "linkedName": "RB Out"
+      "linkedName": "HomeDepot"
     },
     {
       "anchor": {
         "x": 0.5470498408564819,
-        "y": 7.071914713541666
+        "y": 5.69894871238426
       },
       "prevControl": {
-        "x": 3.229930121527779,
-        "y": 7.191719545717592
+        "x": 0.542003223771295,
+        "y": 6.12610357104353
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "HomeDepot"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 1.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -48,7 +62,7 @@
   "folder": "Base Pack",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

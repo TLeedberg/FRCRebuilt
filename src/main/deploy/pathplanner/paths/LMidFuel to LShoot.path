@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.818297158061593,
-        "y": 4.445573596014493
+        "x": 8.086404733009708,
+        "y": 4.6424487671006185
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.575331295289854,
-        "y": 6.324168591485508
+        "x": 6.843438870237969,
+        "y": 6.521043762571633
       },
       "isLocked": false,
       "linkedName": "LMidFuel"
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 3.5320751811594207,
-        "y": 7.380589447463768
+        "x": 3.9871989463812882,
+        "y": 7.42655367387467
       },
       "prevControl": {
-        "x": 4.676402740036232,
-        "y": 7.3874186480978254
+        "x": 5.131526505258099,
+        "y": 7.433382874508728
       },
       "nextControl": null,
       "isLocked": false,
@@ -58,13 +58,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DLC",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": -110.05304335565931
   },
   "useDefaultConstraints": true
 }

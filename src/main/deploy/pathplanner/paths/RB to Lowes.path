@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.5534356884057967,
-        "y": 1.4600832767210148
+        "x": 4.030799798657025,
+        "y": 0.6487748119212962
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.638163051057656,
-        "y": 1.232649837144122
+        "x": 3.115527161308884,
+        "y": 0.4213413723444035
       },
       "isLocked": false,
       "linkedName": "RB"
@@ -45,10 +45,10 @@
     "rotation": 0.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Base Pack",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

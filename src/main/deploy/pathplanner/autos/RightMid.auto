@@ -11,7 +11,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 2.5
+                  "waitTime": 1.5
                 }
               },
               {
@@ -19,30 +19,68 @@
                 "data": {
                   "name": "ShootToHub"
                 }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "SpindexerSpin"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "YoureUnderArrest"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "DeployerOut"
+                }
               }
             ]
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "RB to RightNML"
-          }
-        },
-        {
-          "type": "parallel",
+          "type": "deadline",
           "data": {
             "commands": [
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "IntakeOutake"
+                  "pathName": "RB to RightNML"
                 }
-              },
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
               {
                 "type": "path",
                 "data": {
                   "pathName": "RightNML to RFuel"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeIn"
                 }
               }
             ]
@@ -68,7 +106,7 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "deadline",
           "data": {
             "commands": [
               {
@@ -80,7 +118,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "IntakeIntake"
+                  "name": "IntakeIn"
                 }
               }
             ]
@@ -101,14 +139,26 @@
                 "data": {
                   "name": "ShootToHub"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "SpindexerSpin"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "YoureUnderArrest"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeIn"
+                }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "RightShoot to closerRFuel"
           }
         },
         {
@@ -116,9 +166,34 @@
           "data": {
             "commands": [
               {
+                "type": "path",
+                "data": {
+                  "pathName": "RightShoot to closerRFuel"
+                }
+              },
+              {
                 "type": "named",
                 "data": {
-                  "name": "IntakeOutake"
+                  "name": "IntakeIn"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "noTurnTrenchRight"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeIn"
                 }
               }
             ]
@@ -144,7 +219,7 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "deadline",
           "data": {
             "commands": [
               {
@@ -156,7 +231,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "IntakeIntake"
+                  "name": "IntakeIn"
                 }
               }
             ]
@@ -167,15 +242,27 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
+                "type": "named",
                 "data": {
-                  "waitTime": 3.0
+                  "name": "ShootToHub"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "ShootToHub"
+                  "name": "SpindexerSpin"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "YoureUnderArrest"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeIn"
                 }
               }
             ]

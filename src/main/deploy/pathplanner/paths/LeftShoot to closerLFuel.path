@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.5320751811594207,
-        "y": 7.380589447463768
+        "x": 3.9871989463812882,
+        "y": 7.42655367387467
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.532075181159421,
-        "y": 7.380589447463768
+        "x": 4.987198946381288,
+        "y": 7.42655367387467
       },
       "isLocked": false,
       "linkedName": "LeftShoot"
@@ -41,14 +41,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 1.9,
+    "velocity": 5.1,
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DLC",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

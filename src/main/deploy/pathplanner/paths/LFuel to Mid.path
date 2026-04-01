@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.818297158061593,
-        "y": 7.075996829710146
+        "x": 8.086404733009708,
+        "y": 7.036867277140336
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.81090884158615,
-        "y": 6.399321177410428
+        "x": 8.088883953597676,
+        "y": 6.325081593599655
       },
       "isLocked": false,
       "linkedName": "LFuel"
     },
     {
       "anchor": {
-        "x": 7.818297158061593,
-        "y": 4.445573596014493
+        "x": 8.086404733009708,
+        "y": 4.6424487671006185
       },
       "prevControl": {
-        "x": 7.789696671195653,
-        "y": 5.6145992413949335
+        "x": 8.090510999609316,
+        "y": 5.668961828843436
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": -110.05304335565931
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DLC",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": -111.17486280316169
   },
   "useDefaultConstraints": true
 }

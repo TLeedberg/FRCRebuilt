@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.029990813078704,
-        "y": 1.4546689814814817
+        "x": 5.991980497262774,
+        "y": 1.3901746248986218
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.883613715277778,
-        "y": 2.0050757378472226
+        "x": 5.964640929136253,
+        "y": 2.350949285279805
       },
       "isLocked": false,
-      "linkedName": "closerRFuel"
+      "linkedName": "noTurnTrenchRight"
     },
     {
       "anchor": {
@@ -20,8 +20,8 @@
         "y": 4.491977358217593
       },
       "prevControl": {
-        "x": 5.955500037741547,
-        "y": 4.013228713768116
+        "x": 5.871953125,
+        "y": 3.8616271289537716
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,9 +45,9 @@
     "rotation": 90.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DLC",
   "idealStartingState": {
-    "velocity": 0,
+    "velocity": 5.1,
     "rotation": 90.0
   },
   "useDefaultConstraints": true

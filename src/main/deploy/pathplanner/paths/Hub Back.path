@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.796220486111111,
-        "y": 3.585764684606482
+        "x": 3.5031666100543477,
+        "y": 4.031867810235507
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.753305590798765,
-        "y": 5.719952214805826
+        "x": 2.9827386835969185,
+        "y": 3.976986770072993
       },
       "isLocked": false,
-      "linkedName": "closeMidMid"
+      "linkedName": "Hub"
     },
     {
       "anchor": {
-        "x": 3.9871989463812882,
-        "y": 7.42655367387467
+        "x": 2.087478963909165,
+        "y": 4.031867810235507
       },
       "prevControl": {
-        "x": 7.27062037037037,
-        "y": 7.68150217013889
+        "x": 2.693561625608273,
+        "y": 4.054948993815896
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "LeftShoot"
+      "linkedName": "HubBack"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 180.0
   },
   "reversed": false,
-  "folder": "DLC",
+  "folder": "Base Pack",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -89.61810451456196
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

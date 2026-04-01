@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.5534356884057967,
-        "y": 1.4600832767210148
+        "x": 4.030799798657025,
+        "y": 0.6487748119212962
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.178032190393519,
-        "y": 0.16922743055555545
+        "x": 5.104025958009176,
+        "y": 0.6486875599679808
       },
       "isLocked": false,
       "linkedName": "RB"
@@ -20,8 +20,8 @@
         "y": 0.6487748119212962
       },
       "prevControl": {
-        "x": 4.991179253472223,
-        "y": 0.6712792245370371
+        "x": 5.394832069712217,
+        "y": 0.6642153455546203
       },
       "nextControl": null,
       "isLocked": false,
@@ -41,14 +41,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 3.9,
-    "rotation": 0.0
+    "velocity": 5.1,
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DLC",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -90.0
   },
   "useDefaultConstraints": true
 }

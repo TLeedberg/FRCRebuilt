@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.5031666100543477,
-        "y": 4.031867810235507
+        "x": 5.779487593775346,
+        "y": 0.6923083075904686
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.177566947397912,
-        "y": 3.8783516452875935
+        "x": 6.1045870537766564,
+        "y": 1.1500536821642022
       },
       "isLocked": false,
-      "linkedName": "Hub"
+      "linkedName": "closerRFuel"
     },
     {
       "anchor": {
-        "x": 1.5908877377717392,
-        "y": 3.1247137681159427
+        "x": 5.991980497262774,
+        "y": 1.3901746248986218
       },
       "prevControl": {
-        "x": 2.1215171493373877,
-        "y": 3.3703093669798507
+        "x": 5.980226116299915,
+        "y": 1.0220706475336958
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "ClimbRight"
+      "linkedName": "noTurnTrenchRight"
     }
   ],
   "rotationTargets": [],
@@ -41,14 +41,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": 0.0
+    "velocity": 5.1,
+    "rotation": 90.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DLC",
   "idealStartingState": {
-    "velocity": 0,
-    "rotation": 0.0
+    "velocity": 5.1,
+    "rotation": 0.3121139995448831
   },
   "useDefaultConstraints": true
 }

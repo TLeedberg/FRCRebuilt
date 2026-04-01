@@ -16,12 +16,12 @@
     },
     {
       "anchor": {
-        "x": 3.5241277488425933,
-        "y": 0.6853854890046296
+        "x": 4.0206403767652255,
+        "y": 0.6923083075904686
       },
       "prevControl": {
-        "x": 7.177978298611111,
-        "y": 0.2199443721064812
+        "x": 7.66140225066196,
+        "y": 0.6081907132612547
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,10 +42,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.31727841548614
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DLC",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 90.0
