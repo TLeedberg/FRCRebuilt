@@ -3,33 +3,47 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.087478963909165,
-        "y": 4.031867810235507
+        "x": 1.3988713831018524,
+        "y": 0.6216776620370377
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.3693948508134546,
-        "y": 4.947819279703975
+        "x": 0.9549505208333338,
+        "y": 0.5895941116898156
       },
       "isLocked": false,
-      "linkedName": "HubBack"
+      "linkedName": "SideQuest"
     },
     {
       "anchor": {
-        "x": 0.5470498408564819,
-        "y": 7.071914713541666
+        "x": 0.6679700520833338,
+        "y": 0.6216776620370377
       },
       "prevControl": {
-        "x": 1.6662717964314682,
-        "y": 7.115091304237632
+        "x": 0.9818508391203709,
+        "y": 0.6303382523148151
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "HomeDepot"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 1.5,
+        "maxAcceleration": 1.5,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
@@ -42,7 +56,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": "Base Pack",

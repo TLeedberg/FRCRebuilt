@@ -11,7 +11,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 2.5
+                  "waitTime": 1.5
                 }
               },
               {
@@ -27,7 +27,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.75
+                        "waitTime": 0.5
                       }
                     },
                     {
@@ -42,14 +42,14 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "DeployerOut"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
                   "name": "YoureUnderArrest"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "DeployerOut"
+                }
               }
             ]
           }
@@ -61,44 +61,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "RB to BoltDepot"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "IntakeIn"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "deadline",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "SpindexerSpin"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShootToHub"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "IntakeIn"
-                }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "BoltDepot In Slow"
+                  "pathName": "LB to LeftNML"
                 }
               }
             ]
@@ -109,9 +72,122 @@
           "data": {
             "commands": [
               {
+                "type": "path",
+                "data": {
+                  "pathName": "LeftNML to LFuel"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeIn"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "sciggle left"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeIn"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "FerryShoot"
+                }
+              },
+              {
                 "type": "named",
                 "data": {
                   "name": "SpindexerSpin"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "YoureUnderArrest"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeIn"
+                }
+              },
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 5.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeIn"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "RFuel to LeftShootPart2"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeIn"
+                }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "LeftShootPart2 to LeftShoot"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "IntakeIn"
                 }
               },
               {
@@ -123,7 +199,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "IntakeIn"
+                  "name": "YoureUnderArrest"
                 }
               },
               {

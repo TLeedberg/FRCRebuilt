@@ -8,40 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.843438870237969,
-        "y": 6.521043762571633
+        "x": 7.11104205760437,
+        "y": 5.402057517159437
       },
       "isLocked": false,
       "linkedName": "LMidFuel"
     },
     {
       "anchor": {
-        "x": 5.719781363224637,
-        "y": 7.380589447463768
+        "x": 7.182251956594139,
+        "y": 5.324250457926288
       },
       "prevControl": {
-        "x": 6.1779198056082985,
-        "y": 7.368898698934018
-      },
-      "nextControl": {
-        "x": 4.703616847826087,
-        "y": 7.406519870923913
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 4.0,
-        "y": 7.38112316829485
-      },
-      "prevControl": {
-        "x": 5.14432755887681,
-        "y": 7.387952368928907
+        "x": 8.649033079224164,
+        "y": 4.604843714757325
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "LeftShoot"
+      "linkedName": "LeftFerry"
     }
   ],
   "rotationTargets": [],
@@ -58,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -91.35225757967451
   },
   "reversed": false,
   "folder": "DLC",

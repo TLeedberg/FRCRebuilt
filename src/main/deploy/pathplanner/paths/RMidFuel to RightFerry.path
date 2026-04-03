@@ -3,45 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.086404733009708,
-        "y": 4.6424487671006185
+        "x": 8.044436644969108,
+        "y": 3.3825595073918806
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.843438870237969,
-        "y": 6.521043762571633
+        "x": 7.614411844391987,
+        "y": 3.132047226010726
       },
       "isLocked": false,
-      "linkedName": "LMidFuel"
+      "linkedName": "RMidFuel"
     },
     {
       "anchor": {
-        "x": 5.719781363224637,
-        "y": 7.380589447463768
+        "x": 7.05856712962963,
+        "y": 2.857618995949074
       },
       "prevControl": {
-        "x": 6.1779198056082985,
-        "y": 7.368898698934018
-      },
-      "nextControl": {
-        "x": 4.703616847826087,
-        "y": 7.406519870923913
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 4.0,
-        "y": 7.38112316829485
-      },
-      "prevControl": {
-        "x": 5.14432755887681,
-        "y": 7.387952368928907
+        "x": 7.6863637265986275,
+        "y": 3.1892241104645014
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "LeftShoot"
+      "linkedName": "RightFerry"
     }
   ],
   "rotationTargets": [],
@@ -58,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "reversed": false,
   "folder": "DLC",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -110.05304335565931
+    "rotation": 107.42953623992166
   },
   "useDefaultConstraints": true
 }

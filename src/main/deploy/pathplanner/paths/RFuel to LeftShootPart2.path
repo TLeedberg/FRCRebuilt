@@ -3,45 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.086404733009708,
-        "y": 4.6424487671006185
+        "x": 8.044436644969108,
+        "y": 1.2323299591791703
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.843438870237969,
-        "y": 6.521043762571633
+        "x": 5.413177311951317,
+        "y": 0.23902658619313588
       },
       "isLocked": false,
-      "linkedName": "LMidFuel"
+      "linkedName": "RFuel"
     },
     {
       "anchor": {
-        "x": 5.719781363224637,
-        "y": 7.380589447463768
+        "x": 6.069457704262877,
+        "y": 7.363188068938721
       },
       "prevControl": {
-        "x": 6.1779198056082985,
-        "y": 7.368898698934018
-      },
-      "nextControl": {
-        "x": 4.703616847826087,
-        "y": 7.406519870923913
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 4.0,
-        "y": 7.38112316829485
-      },
-      "prevControl": {
-        "x": 5.14432755887681,
-        "y": 7.387952368928907
+        "x": 6.025005985634477,
+        "y": 6.120762170790104
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "LeftShoot"
+      "linkedName": "LeftShootPart2"
     }
   ],
   "rotationTargets": [],
@@ -61,10 +45,10 @@
     "rotation": 0.0
   },
   "reversed": false,
-  "folder": "DLC",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -110.05304335565931
+    "rotation": 108.9291497309763
   },
   "useDefaultConstraints": true
 }

@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.2459689670117355,
-        "y": 6.626353587962963
+        "x": 6.049320048845471,
+        "y": 7.387793766651865
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.2838205389492754,
-        "y": 2.064082427536232
+        "x": 6.359304662292022,
+        "y": 6.725503954636976
       },
       "isLocked": false,
-      "linkedName": "LB out"
+      "linkedName": "closerLFuel"
     },
     {
       "anchor": {
-        "x": 1.3988713831018524,
-        "y": 0.6216776620370377
+        "x": 6.049320048845471,
+        "y": 6.4372335007770864
       },
       "prevControl": {
-        "x": 1.9448016084188813,
-        "y": 0.6756180775714579
+        "x": 5.996021299812609,
+        "y": 7.748906731732637
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "SideQuest"
+      "linkedName": "noTurnTrenchLeft"
     }
   ],
   "rotationTargets": [],
@@ -41,14 +41,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": 180.0
+    "velocity": 5.1,
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "Base Pack",
+  "folder": "DLC",
   "idealStartingState": {
-    "velocity": 0,
-    "rotation": 0.0
+    "velocity": 5.1,
+    "rotation": 0.16010464479029413
   },
   "useDefaultConstraints": true
 }

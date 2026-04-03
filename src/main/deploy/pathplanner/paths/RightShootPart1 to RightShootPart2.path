@@ -3,45 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.086404733009708,
-        "y": 4.6424487671006185
+        "x": 7.05856712962963,
+        "y": 3.6824089988425923
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.843438870237969,
-        "y": 6.521043762571633
+        "x": 5.674709780092593,
+        "y": 4.0000951967592595
       },
       "isLocked": false,
-      "linkedName": "LMidFuel"
+      "linkedName": "RightShootPart1"
     },
     {
       "anchor": {
-        "x": 5.719781363224637,
-        "y": 7.380589447463768
+        "x": 5.969694733796297,
+        "y": 0.684532552083333
       },
       "prevControl": {
-        "x": 6.1779198056082985,
-        "y": 7.368898698934018
-      },
-      "nextControl": {
-        "x": 4.703616847826087,
-        "y": 7.406519870923913
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 4.0,
-        "y": 7.38112316829485
-      },
-      "prevControl": {
-        "x": 5.14432755887681,
-        "y": 7.387952368928907
+        "x": 5.9776992187500015,
+        "y": 1.1735278501157402
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "LeftShoot"
+      "linkedName": "RightShootPart2"
     }
   ],
   "rotationTargets": [],
@@ -58,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": -1.0
   },
   "reversed": false,
   "folder": "DLC",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -110.05304335565931
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

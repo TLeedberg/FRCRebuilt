@@ -74,7 +74,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Hub to BoltDepot"
+                  "pathName": "HubBack to Lowes"
                 }
               },
               {
@@ -111,7 +111,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "BoltDepot In Slow"
+                  "pathName": "Lowes In Slow"
                 }
               }
             ]

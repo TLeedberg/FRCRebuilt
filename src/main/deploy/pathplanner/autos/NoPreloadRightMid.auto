@@ -9,46 +9,9 @@
           "data": {
             "commands": [
               {
-                "type": "wait",
+                "type": "path",
                 "data": {
-                  "waitTime": 1.5
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ShootToHub"
-                }
-              },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 0.5
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "SpindexerSpin"
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "YoureUnderArrest"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "DeployerOut"
+                  "pathName": "RB to RightNML"
                 }
               }
             ]
@@ -61,20 +24,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "LB to LeftNML"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "LeftNML to LFuel"
+                  "pathName": "RightNML to RFuel"
                 }
               },
               {
@@ -93,7 +43,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "LFuel to Mid"
+                  "pathName": "RFuel to RMidFuel"
                 }
               },
               {
@@ -112,7 +62,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "LMidFuel to LShoot"
+                  "pathName": "RMidFuel to RightShoot"
                 }
               },
               {
@@ -143,6 +93,12 @@
               {
                 "type": "named",
                 "data": {
+                  "name": "SpindexerSpin"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
                   "name": "YoureUnderArrest"
                 }
               },
@@ -151,12 +107,6 @@
                 "data": {
                   "name": "IntakeIn"
                 }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "SpindexerSpin"
-                }
               }
             ]
           }
@@ -168,7 +118,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "LeftShoot to closerLFuel"
+                  "pathName": "RightShoot to closerRFuel"
                 }
               },
               {
@@ -187,7 +137,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "noTurnTrenchLeft"
+                  "pathName": "noTurnTrenchRight"
                 }
               },
               {
@@ -206,7 +156,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "closerLFuel to closerMidFuel"
+                  "pathName": "closerRFuel to closerMidMidR"
                 }
               },
               {
@@ -225,7 +175,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "closerMidMid to LeftShoot"
+                  "pathName": "closerMidMidR to RightShoot"
                 }
               },
               {
@@ -238,7 +188,7 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "deadline",
           "data": {
             "commands": [
               {

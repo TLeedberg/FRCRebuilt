@@ -3,32 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 8.086404733009708,
-        "y": 4.6424487671006185
+        "x": 6.069457704262877,
+        "y": 7.363188068938721
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.843438870237969,
-        "y": 6.521043762571633
+        "x": 6.359957810838433,
+        "y": 7.373469671122042
       },
       "isLocked": false,
-      "linkedName": "LMidFuel"
-    },
-    {
-      "anchor": {
-        "x": 5.719781363224637,
-        "y": 7.380589447463768
-      },
-      "prevControl": {
-        "x": 6.1779198056082985,
-        "y": 7.368898698934018
-      },
-      "nextControl": {
-        "x": 4.703616847826087,
-        "y": 7.406519870923913
-      },
-      "isLocked": false,
-      "linkedName": null
+      "linkedName": "LeftShootPart2"
     },
     {
       "anchor": {
@@ -36,8 +20,8 @@
         "y": 7.38112316829485
       },
       "prevControl": {
-        "x": 5.14432755887681,
-        "y": 7.387952368928907
+        "x": 3.703268522421268,
+        "y": 7.381076150412576
       },
       "nextControl": null,
       "isLocked": false,
@@ -64,7 +48,7 @@
   "folder": "DLC",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -110.05304335565931
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }
