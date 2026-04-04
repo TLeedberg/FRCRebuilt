@@ -24,6 +24,7 @@ import frc.robot.commands.shooter.StopTurretCalibration;
 import frc.robot.commands.shooter.CalibrateTurretFull;
 import frc.robot.commands.shooter.ChimneyDown;
 import frc.robot.commands.shooter.ChimneyUp;
+import frc.robot.commands.shooter.FerryShoot;
 import frc.robot.commands.shooter.ManualShooterControl;
 import frc.robot.commands.shooter.RealManualTurretControl;
 import frc.robot.commands.shooter.ShootMap;
@@ -213,6 +214,8 @@ public class OI {
 				))*/
 
 				.whileTrue(m_operatorXboxController.a(), new ShootToPose(FieldUtils.getInstance()::getHubPose))
+
+				.whileTrue(m_operatorXboxController.x(), new FerryShoot())
 
 				.switchSubmap(operatorIndicator, m_operatorXboxController.start(), Submap.MANUAL)
 			.endSubmap()

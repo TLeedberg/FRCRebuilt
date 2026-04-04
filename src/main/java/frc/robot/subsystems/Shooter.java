@@ -42,14 +42,16 @@ import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import frc.robot.Constants;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.testingdashboard.SubsystemBase;
+import frc.robot.testingdashboard.TDBoolean;
 import frc.robot.testingdashboard.TDNumber;
 import frc.robot.testingdashboard.TDSendable;
 import frc.robot.utils.FieldUtils;
 import frc.robot.utils.SwerveTurretPoseEstimator3d;
-import frc.robot.utils.TrajectorySolver.TrajectoryConditions;
-import frc.robot.utils.TrajectorySolver.TrajectoryParameters;
 import frc.robot.utils.sensing.SparkCurrentLimitDetector;
 import frc.robot.utils.sensing.SparkCurrentLimitDetector.HardLimitDirection;
+import frc.robot.utils.trajectory.VelocityMapping;
+import frc.robot.utils.trajectory.TrajectorySolver.TrajectoryConditions;
+import frc.robot.utils.trajectory.TrajectorySolver.TrajectoryParameters;
 import frc.robot.utils.vision.VisionEstimationResult;
 
 public class Shooter extends SubsystemBase {
@@ -77,10 +79,8 @@ public class Shooter extends SubsystemBase {
 
     private SimpleMotorFeedforward m_flywheelFF;
 
-    // private TDNumber m_TDflywheelLinTermM;
-    // private TDNumber m_TDflywheelLinTermB;
-    private InterpolatingDoubleTreeMap m_flywheelVelocityTermsM;
-    private InterpolatingDoubleTreeMap m_flywheelVelocityTermsB;
+    private VelocityMapping m_overrideVelocityMapping;
+    private TDBoolean m_enableOverrideVelocityMapping;
 
     private TDNumber m_TDflywheelVelocity;
     private TDNumber m_TDflywheelMeasuredVelocity;
@@ -262,22 +262,12 @@ public class Shooter extends SubsystemBase {
         m_flywheelFF = new SimpleMotorFeedforward(
                 m_TDflywheelKs.get(), m_TDflywheelKv.get(), m_TDflywheelKa.get());
 
-        m_turretTolerance = cfgDbl("turretTolerance");
-
         m_TDflywheelVelocity = new TDNumber(this, "Flywheel", "Target Velocity");
         m_TDflywheelVelocity.set(0);
 
-        // m_TDflywheelLinTermM = new TDNumber(this, "VelocityMapping", "TermM", true);
-        // m_TDflywheelLinTermM.set(ShooterConstants.kVelocityLinTermM_45);
-        // m_TDflywheelLinTermB = new TDNumber(this, "VelocityMapping", "TermB", true);
-        // m_TDflywheelLinTermB.set(ShooterConstants.kVelocityLinTermB_45);
-
-        m_flywheelVelocityTermsM = new InterpolatingDoubleTreeMap();
-        m_flywheelVelocityTermsB = new InterpolatingDoubleTreeMap();
-        for (double[] mapping : ShooterConstants.kVelocityLinTerms) {
-            m_flywheelVelocityTermsM.put(mapping[0], mapping[1]);
-            m_flywheelVelocityTermsB.put(mapping[0], mapping[2]);
-        }
+        m_overrideVelocityMapping = new VelocityMapping();
+        new TDSendable(this, "Flywheel", "Override VMap", m_overrideVelocityMapping);
+        m_enableOverrideVelocityMapping = new TDBoolean(this, "Flywheel", "Enable Override VMap", false);
 
         m_TDflywheelMeasuredVelocity = new TDNumber(this, "Flywheel", "Measured Velocity");
         m_TDflywheelMeasuredCurrent = new TDNumber(this, "Flywheel", "Measured Current");
@@ -336,6 +326,8 @@ public class Shooter extends SubsystemBase {
 
         m_TDturretTargetAngle = new TDNumber(this, "Turret", "Target Angle");
         m_TDturretSpeed = new TDNumber(this, "Turret", "Turret Speed");
+
+        m_turretTolerance = cfgDbl("turretTolerance");
 
         m_TDturretMeasuredPosition = new TDNumber(this, "Turret", "Measured Position");
         m_TDturretMeasuredVelocity = new TDNumber(this, "Turret", "Measured Velocity");
@@ -595,44 +587,19 @@ public class Shooter extends SubsystemBase {
         // dtor(deg - offset) + pi/2 = angle
         return Math.toRadians(hood - Constants.ShooterConstants.kHoodAngleOffset) + Math.PI/2;
     }
-
-    /**
-     * Convert a field velocity to a flywheel velocity for the flywheel
-     * 
-     * @param velocity
-     *            Field velocity in m/s
-     * @return Flywheel velocity in RPM
-     */
-    public double velocityToRPM(double velocity, double angle) {
-        if (ShooterConstants.kVelocityMapQuadratic) {
-            final double a = ShooterConstants.kVelocityQuadTermA;
-            final double b = ShooterConstants.kVelocityQuadTermB;
-            final double c = ShooterConstants.kVelocityQuadTermC;
-
-            final double rpm = (-b + Math.sqrt(b*b - 4*a*(c-velocity)))/(2*a);
-            return Math.max(rpm, 0);
-        } else {
-            final double m = m_flywheelVelocityTermsM.get(angle);
-            final double b = m_flywheelVelocityTermsB.get(angle);
-
-            final double rpm = (velocity - b)/m;
-            return Math.max(rpm, 0);
-        }
+    
+    public double velocityToRPM(double velocity, double angle, VelocityMapping overrideMap) {
+        if (m_enableOverrideVelocityMapping.get()) return m_overrideVelocityMapping.getRPM(velocity);
+        if (overrideMap != null) return overrideMap.getRPM(velocity);
+        VelocityMapping map = ShooterConstants.kVelocityMap.get(angle);
+        return map == null ? 0.0 : map.getRPM(velocity);
     }
 
-    public double RPMtoVelocity(double rpm, double angle) {
-        if (ShooterConstants.kVelocityMapQuadratic) {
-            final double a = ShooterConstants.kVelocityQuadTermA;
-            final double b = ShooterConstants.kVelocityQuadTermB;
-            final double c = ShooterConstants.kVelocityQuadTermC;
-
-            return a*rpm*rpm + b*rpm + c;
-        } else {
-            final double m = m_flywheelVelocityTermsM.get(angle);
-            final double b = m_flywheelVelocityTermsB.get(angle);
-            
-            return m*rpm + b;
-        }
+    public double RPMtoVelocity(double rpm, double angle, VelocityMapping overrideMap) {
+        if (m_enableOverrideVelocityMapping.get()) return m_overrideVelocityMapping.getVelocity(rpm);
+        if (overrideMap != null) return overrideMap.getVelocity(rpm);
+        VelocityMapping map = ShooterConstants.kVelocityMap.get(angle);
+        return map == null ? 0.0 : map.getVelocity(rpm);
     }
 
     // see angleToTarget for more info

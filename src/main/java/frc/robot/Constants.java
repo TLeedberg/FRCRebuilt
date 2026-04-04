@@ -1,6 +1,8 @@
 package frc.robot;
 
 
+import java.util.Map;
+
 import com.pathplanner.lib.config.PIDConstants;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
@@ -14,6 +16,8 @@ import edu.wpi.first.math.numbers.N1;
 import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.math.util.Units;
 import frc.robot.utils.Configuration;
+import frc.robot.utils.trajectory.InterpolatingVelocityMap;
+import frc.robot.utils.trajectory.VelocityMapping;
 import frc.robot.utils.vision.VisionConfig;
 
 public final class Constants {
@@ -182,21 +186,29 @@ public final class Constants {
         public static final double kVelocityQuadTermB =  3.08206828359486795e-3;
         public static final double kVelocityQuadTermC =  9.78677085670659030e-1;
 
-        // values for 45 degrees (farther from hub)
+        public static final InterpolatingVelocityMap kVelocityMap = new InterpolatingVelocityMap(Map.ofEntries(
+            Map.entry(Math.toRadians(45), new VelocityMapping(3.15, 9.58, 0750, 4250)),
+            Map.entry(Math.toRadians(60), new VelocityMapping(7.40, 8.25, 3250, 3650)),
+            Map.entry(Math.toRadians(65), new VelocityMapping(2.06, 7.84, 0500, 3750))
+        ));
+
+        /*
         public static final double[][] kVelocityLinTerms = {
             //                   angle,   slope, y-intercept
             {Math.toRadians(45), 1.85e-3,     2.18000},
             {Math.toRadians(50), 1.80e-3,     1.94375},
             {Math.toRadians(65), 1.65e-3,     1.23500},
         };
+        // values for 45 degrees (farther from hub)
         public static final double kVelocityLinTermM_45 = 0.00185;
         public static final double kVelocityLinTermB_45 = 2.18;
-        // values for 45 degrees (farther from hub)
+        // values for 50 degrees (farther from hub)
         public static final double kVelocityLinTermM_50 = 0.0017;
         public static final double kVelocityLinTermB_50 = 1.94375;
         // values for 65 degrees (closer to hub)
         public static final double kVelocityLinTermM_65 = 0.00165;
         public static final double kVelocityLinTermB_65 = 1.235;
+         */
     }
 
     public static final class OIConstants {

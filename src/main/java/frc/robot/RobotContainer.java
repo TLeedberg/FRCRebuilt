@@ -22,6 +22,7 @@ import frc.robot.commands.intake.IntakeOutake;
 import frc.robot.commands.intake.DeployerOut;
 import frc.robot.commands.shooter.ChimneyUp;
 import frc.robot.commands.shooter.CrawlingThroughTheTrench;
+import frc.robot.commands.shooter.FerryShoot;
 import frc.robot.commands.shooter.FuelRainbowHub;
 import frc.robot.commands.shooter.FuelRainbowLeftTrench;
 import frc.robot.commands.shooter.FuelRainbowRightTrench;
@@ -94,6 +95,9 @@ public class RobotContainer {
     new FuelRainbowHub();
     new FuelRainbowLeftTrench();
     new FuelRainbowRightTrench();
+
+    new FerryShoot();
+    new CrawlingThroughTheTrench();
 
     new IntakeIn();
     new DeployerOut();

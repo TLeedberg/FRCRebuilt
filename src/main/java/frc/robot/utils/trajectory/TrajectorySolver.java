@@ -1,6 +1,5 @@
-package frc.robot.utils;
+package frc.robot.utils.trajectory;
 
-import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.geometry.Translation3d;
 
@@ -16,12 +15,13 @@ public class TrajectorySolver {
         public Translation3d launch;
         public Translation3d target;
         public Translation2d chassis_velocity;
+        public boolean compensate_for_velocity = true;
         public double theta_pitch;
     }
 
     // constants and conveniences
     private static final double GRAVITY = 9.81;
-    private static final double VELOCITY_THRESHOLD = 1e-2;
+    private static final double VELOCITY_THRESHOLD = 0.3;
     private static final Translation3d UP = new Translation3d(0,0,1);
     private static final Translation3d ZERO = Translation3d.kZero;
 
@@ -47,26 +47,24 @@ public class TrajectorySolver {
         // defining our variables
         double t = conditions.theta_pitch;
         Translation3d r = conditions.target.minus(conditions.launch);
-        Translation3d v = new Translation3d(conditions.chassis_velocity.unaryMinus());
+        Translation2d v_h = conditions.chassis_velocity.unaryMinus();
+        if (!conditions.compensate_for_velocity) v_h = Translation2d.kZero;
 
         double r_v = r.dot(UP);
         Translation2d r_h = r.toTranslation2d();
         
-        double v_v = v.dot(UP);
-        Translation2d v_h = v.toTranslation2d();
-
-        // quartic terms
         double tan2 = Math.pow(Math.tan(t),2);
 
+        // quartic terms
         double a = (GRAVITY * GRAVITY)/4.0;
-        double b = v_v*GRAVITY;
-        double c = r_v*GRAVITY + v_v*v_v - tan2*v_h.dot(v_h);
-        double d = 2*(r_v*v_v - tan2*r_h.dot(v_h));
+        double b = 0;
+        double c = r_v*GRAVITY - tan2*v_h.dot(v_h);
+        double d = -2*tan2*r_h.dot(v_h);
         double e = r_v*r_v - tan2*r_h.dot(r_h);
 
         // solve for maximum time (highest arc)
         double time = 0;
-        if (v.getDistance(ZERO) > VELOCITY_THRESHOLD) {
+        if (v_h.dot(v_h) > VELOCITY_THRESHOLD) {
             double[] roots = solveRealQuarticRoots(a, b, c, d, e);
             time = -Double.MAX_VALUE;
             for (int i = 0; i < roots.length; i++) {
